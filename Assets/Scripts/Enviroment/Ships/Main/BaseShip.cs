@@ -13,7 +13,7 @@ using Random = UnityEngine.Random;
 /// Это базовый класс для всех кораблей
 /// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
-public class BaseShip : MonoBehaviour, IMovable, IShootable
+public class BaseShip : MonoBehaviour
 {
 	public int bulletType;
 	public float maxShootRate = 10;

@@ -28,7 +28,7 @@ public class World
 	/// <summary>
 	/// ID текущего уровня
 	/// </summary>
-	public string WorldId { get => _worldId; set => _worldId = value; }
+	public string WorldId => _worldId;
 
 	/// <summary>
 	/// Название уровня
