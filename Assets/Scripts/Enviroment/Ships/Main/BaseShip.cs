@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityNightPool;
@@ -12,7 +13,7 @@ using Random = UnityEngine.Random;
 /// Это базовый класс для всех кораблей
 /// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
-public class BaseShip : MonoBehaviour, IMovable
+public class BaseShip : MonoBehaviour
 {
 	public int bulletType;
 	public float maxShootRate = 10;
@@ -39,8 +40,18 @@ public class BaseShip : MonoBehaviour, IMovable
 		{
 			ShipColorizer colorizer = GetComponentInChildren<ShipColorizer>();
 			colorizer.RandomColorize(GetComponent<SpriteRenderer>());
+			ModifiedParamsFromDifficult();
 		}
     }
+
+	private void ModifiedParamsFromDifficult()
+	{
+		rotateSpeed = 5 * World.newWorld.Difficulty;
+		shootForce = 4 * World.newWorld.Difficulty;
+		flySpeed = 6 * World.newWorld.Difficulty;
+		dmg = 3 * World.newWorld.Difficulty;
+		maxShootRate /= World.newWorld.Difficulty;
+	}
 
 	public virtual void Start()
 	{

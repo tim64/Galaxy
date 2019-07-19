@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using static Constants;
 using UnityEngine;
 
 public class BossShip : BaseShip
 {
 	private Vector3 startPos;
 
-	private readonly float speed = Constants.BOSS_SPEED;
-	private readonly float xScale = Constants.BOSS_X_PATH_SCALE;
-	private readonly float yScale = Constants.BOSS_Y_PATH_SCALE;
+	private readonly float speed = BOSS_SPEED;
+	private readonly float xScale = BOSS_X_PATH_SCALE;
+	private readonly float yScale = BOSS_Y_PATH_SCALE;
 
 	public bool attack;
 	private float tweenTime;

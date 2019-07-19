@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class World
 {
+	public static World newWorld;
+
 	[SerializeField]
 	private string _worldId;
 
@@ -20,10 +22,13 @@ public class World
 	[SerializeField]
 	private int _difficulty;
 
+	[SerializeField]
+	private int _bossType;
+
 	/// <summary>
 	/// ID текущего уровня
 	/// </summary>
-	public string WorldId { get => _worldId; set => _worldId = value; }
+	public string WorldId => _worldId;
 
 	/// <summary>
 	/// Название уровня
@@ -41,14 +46,26 @@ public class World
 	public int Difficulty { get => _difficulty; set => _difficulty = value; }
 
 	/// <summary>
+	/// Тип босса в конце уровня
+	/// </summary>
+	public int BossType { get => _bossType; set => _bossType = value; }
+
+	/// <summary>
 	/// Метод создает экземпляр класса World из JSON, по указанному пути
 	/// </summary>
 	/// <param name="jsonString"></param>
 	/// <returns></returns>
 	public static World CreateFromJSON(string jsonString)
     {
-        var jsonTextFile = Resources.Load<TextAsset>(jsonString);
-        World newWorld =  JsonUtility.FromJson<World>(jsonTextFile.text);
-        return newWorld;
+		if (newWorld != null)
+		{
+			return newWorld;
+		}
+		else
+		{
+			var jsonTextFile = Resources.Load<TextAsset>(jsonString);
+			newWorld = JsonUtility.FromJson<World>(jsonTextFile.text);
+			return newWorld;
+		}
     }
 }

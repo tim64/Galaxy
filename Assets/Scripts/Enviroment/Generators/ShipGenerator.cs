@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Constants;
 using Random = UnityEngine.Random;
 
 
@@ -26,7 +27,7 @@ public class ShipGenerator : MonoBehaviour
 	private void Start()
 	{
 		//Получаем параметры уровня из JSON
-		currentWorld = GetCurrentWorld(Constants.JSON_PATH_WORLD1);
+		currentWorld = GetCurrentWorld(JSON_PATH_WORLD1);
 		Debug.Log(currentWorld.WorldName);
 		shipContainer = CreateShipContainer();
 

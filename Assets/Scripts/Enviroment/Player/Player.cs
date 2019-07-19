@@ -15,10 +15,7 @@ public class Player : MonoBehaviour
 
 	public int hp = 100;
 
-	private void Start()
-	{
-		playerPos = transform.position;
-	}
+	private void Start() => playerPos = transform.position;
 
 	private void Update()
     {
