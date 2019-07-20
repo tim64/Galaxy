@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 	private readonly float shootRate = 0.2f;
 	private readonly float shootForce = 10;
 
-	public int hp = 100;
+	public float hp = 100;
 
 	private void Start() => playerPos = transform.position;
 
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
 		transform.position = playerPos;
 	}
 
-	public void Damage(int damage)
+	public void Damage(float damage)
 	{
 		hp -= damage;
 

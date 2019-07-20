@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WaypointController : MonoBehaviour
 {
@@ -9,18 +6,9 @@ public class WaypointController : MonoBehaviour
 	public Transform gameCenter;
 	public Transform bossRespPoint;
 	public Transform bossGamePoint;
+	public Transform attakPoint;
 
 	public static WaypointController instance;
 
-	void Start()
-	{
-		if (instance == null)
-		{
-			instance = this;
-		}
-		else if (instance == this)
-		{
-			Destroy(gameObject);
-		}
-	}
+	void Start() => instance = this;
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityNightPool;
+using static Constants;
 
 /// <summary>
 /// Класс пули для игрока и врагов
@@ -10,7 +11,7 @@ using UnityNightPool;
 public class Bullet : MonoBehaviour
 {
 	public bool isPlayerBullet;
-	public int dmg;
+	public float damage;
 
 	public void Shoot() => StartCoroutine(Destroy());
 
@@ -29,7 +30,7 @@ public class Bullet : MonoBehaviour
 		{
 			if (!isPlayerBullet)
 			{
-				collision.GetComponent<Player>().Damage(dmg);
+				collision.GetComponent<Player>().Damage(damage);
 				GetComponent<PoolObject>().Return();
 			}
 		}
@@ -37,7 +38,7 @@ public class Bullet : MonoBehaviour
 
 	private IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(BULLET_DESTROY_TIME);
         GetComponent<PoolObject>().Return();
     }
 }

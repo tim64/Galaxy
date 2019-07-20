@@ -222,7 +222,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.6}
   serializedVersion: 2
   m_Radius: 1.01
 --- !u!50 &331669701
@@ -243,7 +243,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!1 &477537102
@@ -663,6 +663,7 @@ MonoBehaviour:
   gameCenter: {fileID: 888030737}
   bossRespPoint: {fileID: 958747074}
   bossGamePoint: {fileID: 2137157356}
+  attakPoint: {fileID: 1159977380}
 --- !u!1 &745799154
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,18 +707,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2d9f306feb7412eb1be878c564b681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseShipPrefab: {fileID: 4057008069776773379, guid: 9dfc6465222614ef6a3cb56e5a0b3b38,
-    type: 3}
-  angryShipPrefab: {fileID: 4057008069776773379, guid: abccb7a0da08c40c0be6fb4f70e67572,
-    type: 3}
-  protectedShipPrefab: {fileID: 4057008069776773379, guid: e9e32fb4e43a8492ea35c89b3014f8bb,
-    type: 3}
-  teleportShipPrefab: {fileID: 4057008069776773379, guid: c0ec5990636f34bf3838dc87faf53457,
-    type: 3}
-  quickShipPrefab: {fileID: 4057008069776773379, guid: 6efeb8125cc39466a9391ba290449601,
-    type: 3}
-  bossShipPrefab: {fileID: 1139246442966365839, guid: 2a78a6c4405f446f49446bae13aefbfc,
-    type: 3}
+  shipPrefabs:
+  - {fileID: 4057008069776773379, guid: abccb7a0da08c40c0be6fb4f70e67572, type: 3}
+  - {fileID: 4057008069776773379, guid: c0ec5990636f34bf3838dc87faf53457, type: 3}
+  - {fileID: 4057008069776773379, guid: 9dfc6465222614ef6a3cb56e5a0b3b38, type: 3}
+  - {fileID: 4057008069776773379, guid: e9e32fb4e43a8492ea35c89b3014f8bb, type: 3}
+  bossShipPrefabs:
+  - {fileID: 1139246442966365839, guid: 2a78a6c4405f446f49446bae13aefbfc, type: 3}
 --- !u!1 &833425607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,10 +1476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51b8c0247ad04af2a301981cf2cb618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipBasePrefab: {fileID: 7680881105593752636, guid: 9dfc6465222614ef6a3cb56e5a0b3b38,
-    type: 3}
   builder: {fileID: 745799156}
-  centerGame: {fileID: 888030737}
 --- !u!1 &2137157355
 GameObject:
   m_ObjectHideFlags: 0
