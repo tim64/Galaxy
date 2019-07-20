@@ -97,5 +97,12 @@
 	public static float BULLET_DESTROY_TIME = 10f;
 	#endregion
 
+	#region Player Params
+	public static float PLAYER_SPEED = 2;
+	public static float PLAYER_RELOADING_TIME = 0.2f;
+	public static float PLAYER_SHOOT_FORCE = 10;
+	public static float PLAYER_MAX_HP = 100;
+	#endregion
+
 
 }
