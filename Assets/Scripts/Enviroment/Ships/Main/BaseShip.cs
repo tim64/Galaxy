@@ -79,7 +79,7 @@ public class BaseShip : MonoBehaviour
 			}
 			else
 			{
-				yield return new WaitForSeconds(shootRate);
+				yield return new WaitForSeconds(SHOOT_RATE_MAX / shootRate);  
 				Shoot();
 			}
 		}
@@ -170,8 +170,6 @@ public class BaseShip : MonoBehaviour
 		}
 
 		bulletParams.damage = damage;
-
-		bulletParams.Shoot();
 	}
 
 	public virtual void DestroyShip()

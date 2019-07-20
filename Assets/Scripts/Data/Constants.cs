@@ -82,19 +82,15 @@
 	#endregion
 
 	#region Boss Params
-	public static float BOSS_SHOOT_RATE = 3;
+	public static float BOSS_SHOOT_RATE = 10;
 	public static float BOSS_DAMAGE = 5;
 	public static float BOSS_SHOOT_FORCE = 8;
 	#endregion
 
 	#region Boss Gun Params
-	public static float BOSS_GUN_SHOOT_RATE = 5;
+	public static float BOSS_GUN_SHOOT_RATE = 15;
 	public static float BOSS_GUN_DAMAGE = 10;
 	public static float BOSS_GUN_FORCE = 15;
-	#endregion
-
-	#region Pool Params
-	public static float BULLET_DESTROY_TIME = 10f;
 	#endregion
 
 	#region Player Params

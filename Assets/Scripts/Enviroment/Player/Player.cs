@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
             bullet.transform.position = transform.position;
 
 			bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * shootForce);
-			bullet.GetComponent<Bullet>().Shoot();
 
 			LeanTween.delayedCall(reloadingTime, () => isShooting = false);
         }

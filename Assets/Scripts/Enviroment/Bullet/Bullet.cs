@@ -13,7 +13,12 @@ public class Bullet : MonoBehaviour
 	public bool isPlayerBullet;
 	public float damage;
 
-	public void Shoot() => StartCoroutine(Destroy());
+	Renderer render;
+
+	private void Start()
+	{
+		render = GetComponent<Renderer>();
+	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -36,9 +41,11 @@ public class Bullet : MonoBehaviour
 		}
 	}
 
-	private IEnumerator Destroy()
-    {
-        yield return new WaitForSeconds(BULLET_DESTROY_TIME);
-        GetComponent<PoolObject>().Return();
-    }
+	void Update()
+	{
+		if (!render.isVisible)
+		{
+			GetComponent<PoolObject>().Return();
+		}
+	}
 }
