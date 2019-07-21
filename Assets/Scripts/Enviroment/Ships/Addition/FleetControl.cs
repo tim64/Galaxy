@@ -70,7 +70,7 @@ public class FleetControl : MonoBehaviour
 		bossShip.transform.position = bossRespPoint.transform.position;
 
 		//Интро. Босс спускается к игроку
-		LeanTween.moveLocalY(bossShip, bossGamePoint.position.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossShip>().StartAttack());
+		LeanTween.moveLocalY(bossShip, bossGamePoint.position.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossShip>().StartAttackPhase());
 	}
 
 	private void StopAttack() => StopCoroutine(attackCoroutine);

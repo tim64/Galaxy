@@ -16,7 +16,7 @@ public class ProtectedShip : BaseShip
 
 	private void CreateProtected()
     {
-        armor = Instantiate(protectFXPrefab, Vector2.zero, Quaternion.identity);
+        armor = Instantiate(protectFXPrefab);
         armor.transform.parent = transform;
         armor.transform.localPosition = Vector3.zero;
     }

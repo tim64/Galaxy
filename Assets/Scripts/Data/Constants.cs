@@ -69,10 +69,10 @@
 	public static float ANGRY_SHIP_SHOOT_FORCE = 5;
 
 	//Период яростной атаки
-	public static float ANGRY_SHIP_RAGE_RATE = 3;
+	public static float ANGRY_SHIP_RAGE_PERIOD = 3;
 
 	//Продолжительность яростной атаки
-	public static float ANGRY_SHIP_RAGE_TIME = 5;
+	public static float ANGRY_SHIP_RAGE_ANIMATION_TIME = 5;
 
 	//Скорость атаки при ярости
 	public static float ANGRY_SHIP_RAGE_SHOOT_RATE = 8;

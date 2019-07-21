@@ -19,7 +19,7 @@ public class ShipBuilder : MonoBehaviour
 	/// <returns></returns>
 	public GameObject BuildRandomShip()
 	{
-		GameObject newShip = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], Vector3.zero, Quaternion.identity);
+		GameObject newShip = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)]);
 
 		newShip.GetComponent<BaseShip>().useRandomColor = true;
 		return newShip;
@@ -28,7 +28,7 @@ public class ShipBuilder : MonoBehaviour
 	public GameObject CreateBossShip()
 	{
 		//FIXME: Индекс из массива боссов
-		GameObject newShip = Instantiate(bossShipPrefabs[0], Vector3.zero, Quaternion.identity);
+		GameObject newShip = Instantiate(bossShipPrefabs[0]);
 		newShip.GetComponent<BaseShip>().useRandomColor = true;
 		return newShip;
 	}

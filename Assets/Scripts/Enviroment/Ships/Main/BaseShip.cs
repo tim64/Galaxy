@@ -44,11 +44,11 @@ public class BaseShip : MonoBehaviour
 		{
 			ShipColorizer colorizer = GetComponentInChildren<ShipColorizer>();
 			colorizer.RandomColorize(GetComponent<SpriteRenderer>());
-			ModifiedParamsFromDifficult();
+			ModifiyParamsFromDifficulty();
 		}
     }
 
-	private void ModifiedParamsFromDifficult()
+	private void ModifiyParamsFromDifficulty()
 	{
 		rotateSpeed = BASE_SHIP_ROTATE_SPEED * World.newWorld.Difficulty;
 		shootForce = BASE_SHIP_SHOOT_FORCE * World.newWorld.Difficulty;
@@ -70,19 +70,9 @@ public class BaseShip : MonoBehaviour
 
 	private IEnumerator Shooting()
 	{
-		while (true)
-		{
-			if (useRandomShootRange)
-			{
-				yield return new WaitForSeconds(Random.Range(0, SHOOT_RATE_MAX / shootRate));
-				Shoot();
-			}
-			else
-			{
-				yield return new WaitForSeconds(SHOOT_RATE_MAX / shootRate);  
-				Shoot();
-			}
-		}
+		var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
+		yield return new WaitForSeconds(waitTime);
+		Shoot();
 	}
 
 	private void Update()
@@ -149,10 +139,10 @@ public class BaseShip : MonoBehaviour
 	/// </summary>
 	public virtual void Shoot()
 	{
-		PoolObject bullet = PoolManager.Get(bulletType);
-		Bullet bulletParams = bullet.GetComponent<Bullet>();
-		Transform bulletTransform = bullet.transform;
-		Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+		PoolObject bulletObject = PoolManager.Get(bulletType);
+		Bullet bullet = bulletObject.GetComponent<Bullet>();
+		Transform bulletTransform = bulletObject.transform;
+		Rigidbody2D bulletRb = bulletObject.GetComponent<Rigidbody2D>();
 
 		bulletTransform.rotation = transform.rotation;
 		bulletTransform.position = transform.position;
@@ -169,7 +159,7 @@ public class BaseShip : MonoBehaviour
 			bulletRb.AddForce(-transform.up * shootForce);
 		}
 
-		bulletParams.damage = damage;
+		bullet.damage = damage;
 	}
 
 	public virtual void DestroyShip()

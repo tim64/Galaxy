@@ -48,7 +48,7 @@ public class BossShip : BaseShip
 	/// Метод начинает атаку босса на игрока и он активирует все свои компоненты
 	/// После активации босс перестает быть неуязвимым
 	/// </summary>
-	public void StartAttack()
+	public void StartAttackPhase()
 	{
 		startPos = transform.position;
 		attackPhase = true;
