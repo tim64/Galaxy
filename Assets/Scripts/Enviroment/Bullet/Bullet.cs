@@ -7,7 +7,7 @@ using static Constants;
 /// Класс пули для игрока и врагов
 /// объект обязательно должен содержать компонент PoolObject, так как все пули из пула
 /// </summary>
-[RequireComponent(typeof(PoolObject))]
+
 public class Bullet : MonoBehaviour
 {
 	public bool isPlayerBullet;
@@ -28,6 +28,7 @@ public class Bullet : MonoBehaviour
 			{
 				collision.GetComponent<BaseShip>().DestroyShip();
 				GetComponent<PoolObject>().Return();
+				
 			}
 		}
 

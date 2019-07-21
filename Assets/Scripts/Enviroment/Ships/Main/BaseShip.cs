@@ -19,7 +19,7 @@ public class BaseShip : MonoBehaviour
 	public UnityEvent respawnEvent;
 
 	[Header("FX")]
-	public int bulletType;
+	private int bulletType = 1;
 	public GameObject explosionFX;
 
 
@@ -175,8 +175,8 @@ public class BaseShip : MonoBehaviour
 
 	public virtual void DestroyShip()
 	{
-		PoolObject fx = PoolManager.Get(7);
-		fx.transform.position = transform.position;
+		//PoolObject fx = PoolManager.Get(7);
+		//fx.transform.position = transform.position;
 		Destroy(gameObject);
 	}
 }

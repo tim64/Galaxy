@@ -13,39 +13,11 @@ MonoBehaviour:
   m_Name: PoolConfig
   m_EditorClassIdentifier: 
   _pools:
-  - prefab: {fileID: 1780557000622323025, guid: 928513597dc0b4889ae8bb02c5452a52,
+  - prefab: {fileID: 8760175996321108489, guid: 928513597dc0b4889ae8bb02c5452a52,
       type: 3}
     id: 1
     switchGameObject: 1
-  - prefab: {fileID: -8514367230536097075, guid: 451def971d2c5455887354d5005cecef,
+  - prefab: {fileID: 8760175996321108489, guid: 0ad21720d9cbd466d8515723b1fdff34,
       type: 3}
     id: 2
-    switchGameObject: 1
-  - prefab: {fileID: -1031500573735133139, guid: 484ea821b571d46998a50888aa55617c,
-      type: 3}
-    id: 3
-    switchGameObject: 1
-  - prefab: {fileID: 2020453540116299154, guid: 3229006abcf7d48579c4da7dfbdc63da,
-      type: 3}
-    id: 4
-    switchGameObject: 1
-  - prefab: {fileID: 7010086810679892364, guid: 7691c13e6b33a46888cf92f8c34d4c70,
-      type: 3}
-    id: 5
-    switchGameObject: 1
-  - prefab: {fileID: 7010086810679892364, guid: 5946dba93f20a4d41b2723ff056a1693,
-      type: 3}
-    id: 6
-    switchGameObject: 1
-  - prefab: {fileID: -2146905527048645493, guid: 8f1ae262725754a6bbeca502c6adf1ef,
-      type: 3}
-    id: 7
-    switchGameObject: 1
-  - prefab: {fileID: 2020453540116299154, guid: 1c3ea46f548b14749ac14194df0a00ce,
-      type: 3}
-    id: 8
-    switchGameObject: 1
-  - prefab: {fileID: 5289943696146555484, guid: f24a3037f1c124387813d9deda94975a,
-      type: 3}
-    id: 9
     switchGameObject: 1

@@ -23,9 +23,8 @@ public class Player : MonoBehaviour
         {
 			isShooting = true;
 
-			PoolObject bullet = PoolManager.Get(6);
+			PoolObject bullet = PoolManager.Get(2);
             bullet.transform.position = transform.position;
-
 			bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * shootForce);
 
 			LeanTween.delayedCall(reloadingTime, () => isShooting = false);
@@ -48,9 +47,9 @@ public class Player : MonoBehaviour
 
 	public void DestroyPlayer()
 	{
-		PoolObject fx = PoolManager.Get(7);
-		fx.GetComponent<SpriteRenderer>().color = Color.yellow;
-		fx.transform.position = transform.position;
+		//PoolObject fx = PoolManager.Get(7);
+		//fx.GetComponent<SpriteRenderer>().color = Color.yellow;
+		//fx.transform.position = transform.position;
 		Destroy(gameObject);
 	}
 }
