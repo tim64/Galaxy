@@ -11,14 +11,8 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class ShipGenerator : MonoBehaviour
 {
-	//Префаб базового корабля
-	public BaseShip shipBasePrefab;
-
 	//Билдер кораблей на сцене
 	public ShipBuilder builder;
-
-	//Точка ориентации для флота
-	public Transform centerGame;
 
 	private World currentWorld;
 	private GameObject shipContainer;
@@ -27,8 +21,8 @@ public class ShipGenerator : MonoBehaviour
 	private void Start()
 	{
 		//Получаем параметры уровня из JSON
-		currentWorld = GetCurrentWorld(JSON_PATH_WORLD1);
-		Debug.Log(currentWorld.WorldName);
+		currentWorld = World.CreateFromJSON(JSON_PATH_WORLD1);
+
 		shipContainer = CreateShipContainer();
 
 		GenerateShips();
@@ -37,7 +31,7 @@ public class ShipGenerator : MonoBehaviour
 		ShipGridMover ShipMover = new ShipGridMover();
 		ShipMover.MoveShipsOnGrid(shipContainer);
 
-		shipContainer.transform.localPosition = centerGame.position;
+		shipContainer.transform.localPosition = WaypointController.instance.gameCenter.position;
 
 		//Добавление перемещения кораблей
 		shipContainer.AddComponent<ShipMovement>();
@@ -71,11 +65,5 @@ public class ShipGenerator : MonoBehaviour
 
 		ShipContainer.transform.parent = GameObject.Find("Enviroment").transform;
         return ShipContainer;
-    }
-
-	private World GetCurrentWorld(string JSONString)
-    {
-        World newWorld = World.CreateFromJSON(JSONString);
-        return newWorld;
     }
 }

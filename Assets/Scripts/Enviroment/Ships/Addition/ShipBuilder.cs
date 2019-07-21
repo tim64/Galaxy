@@ -8,38 +8,27 @@ public class ShipBuilder : MonoBehaviour
 {
 	//FIXME: Добавить работу с пулом объектов
 	[Header("Префабы кораблей")]
-	public GameObject baseShipPrefab;
-	public GameObject angryShipPrefab;
-	public GameObject protectedShipPrefab;
-	public GameObject teleportShipPrefab;
-	public GameObject quickShipPrefab;
-	public GameObject bossShipPrefab;
+	public GameObject[] shipPrefabs;
 
+	[Header("Префабы боссов")]
+	public GameObject[] bossShipPrefabs;
+
+	/// <summary>
+	/// Метод строит случайный корабль и заданного массива префабов
+	/// </summary>
+	/// <returns></returns>
 	public GameObject BuildRandomShip()
 	{
-		GameObject newShip = new GameObject();
-
-		int rand = Random.Range(0, 5);
-
-		newShip = InstantiateShip(newShip, rand);
+		GameObject newShip = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)]);
 
 		newShip.GetComponent<BaseShip>().useRandomColor = true;
 		return newShip;
 	}
 
-	private GameObject InstantiateShip(GameObject newShip, int rand)
-	{
-		if (rand == 0) newShip = Instantiate(baseShipPrefab, Vector3.zero, Quaternion.identity);
-		if (rand == 1) newShip = Instantiate(protectedShipPrefab, Vector3.zero, Quaternion.identity);
-		if (rand == 2) newShip = Instantiate(angryShipPrefab, Vector3.zero, Quaternion.identity);
-		if (rand == 3) newShip = Instantiate(teleportShipPrefab, Vector3.zero, Quaternion.identity);
-		if (rand == 4) newShip = Instantiate(quickShipPrefab, Vector3.zero, Quaternion.identity);
-		return newShip;
-	}
-
 	public GameObject CreateBossShip()
 	{
-		GameObject newShip = Instantiate(bossShipPrefab, Vector3.zero, Quaternion.identity);
+		//FIXME: Индекс из массива боссов
+		GameObject newShip = Instantiate(bossShipPrefabs[0]);
 		newShip.GetComponent<BaseShip>().useRandomColor = true;
 		return newShip;
 	}

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using static Constants;
+﻿using static Constants;
 using UnityEngine;
 
 public class BossShip : BaseShip
@@ -12,7 +9,7 @@ public class BossShip : BaseShip
 	private readonly float xScale = BOSS_X_PATH_SCALE;
 	private readonly float yScale = BOSS_Y_PATH_SCALE;
 
-	public bool attack;
+	public bool attackPhase;
 	private float tweenTime;
 
 	private Vector3 upVector;
@@ -20,10 +17,10 @@ public class BossShip : BaseShip
 
 	private void Awake()
 	{
-		//TODO: Вынести в JSON
-		maxShootRate = 0.25f;
-		dmg = 10;
-		shootForce = 8;
+		shootRate = BOSS_SHOOT_RATE;
+		damage = BOSS_DAMAGE;
+		shootForce = BOSS_SHOOT_FORCE;
+
 		useRandomShootRange = false;
 	}
 
@@ -41,7 +38,7 @@ public class BossShip : BaseShip
 	/// </summary>
 	public override void Shoot()
 	{
-		if (attack)
+		if (attackPhase)
 		{
 			base.Shoot();
 		}
@@ -51,10 +48,10 @@ public class BossShip : BaseShip
 	/// Метод начинает атаку босса на игрока и он активирует все свои компоненты
 	/// После активации босс перестает быть неуязвимым
 	/// </summary>
-	public void StartAttack()
+	public void StartAttackPhase()
 	{
 		startPos = transform.position;
-		attack = true;
+		attackPhase = true;
 		RemoveInvulnerability();
 		ActivateGuns();	
 	}
@@ -75,7 +72,7 @@ public class BossShip : BaseShip
 
 	void Update()
 	{
-		if (attack)
+		if (attackPhase)
 		{
 			tweenTime += Time.deltaTime;
 			Vector3 upVector = Vector3.up * Mathf.Sin(tweenTime * speed);

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityNightPool;
 using Random = UnityEngine.Random;
-
+using static Constants;
 /// <summary>
 /// Класс, перекрашивает корабли случайным цветом, используя смещение по каналам
 /// Это реализуется с помощью нового матерала и шейдера HSLRangeShader
@@ -15,24 +15,28 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(SpriteRenderer))]
 public class BaseShip : MonoBehaviour
 {
-	public int bulletType;
-	public float maxShootRate = 10;
-	public GameObject explosionFX;
 	public bool useRandomColor;
+	public UnityEvent respawnEvent;
+
+	[Header("FX")]
+	public int bulletType;
+	public GameObject explosionFX;
+
 
 	//Полет корабля и атака игрока
+	[HideInInspector]
 	public bool attackState;
+	[HideInInspector]
 	public Transform target;
 
-	//TODO вынести параметры в JSOM
-	protected float rotateSpeed = 5;
-	protected int shootForce = 4;
-	protected int flySpeed = 6;
-	protected int dmg = 3;
+	//Параметры корабля
+	protected float shootRate = BASE_SHIP_SHOOT_RATE;
+	protected float rotateSpeed = BASE_SHIP_ROTATE_SPEED;
+	protected float shootForce = BASE_SHIP_SHOOT_FORCE;
+	protected float flySpeed = BASE_SHIP_FLY_SPEED;
+	protected float damage = BASE_SHIP_DAMAGE;
 
 	protected bool useRandomShootRange = true;
-
-	public UnityEvent respawnEvent;
 
 	private void Awake()
     {
@@ -40,17 +44,17 @@ public class BaseShip : MonoBehaviour
 		{
 			ShipColorizer colorizer = GetComponentInChildren<ShipColorizer>();
 			colorizer.RandomColorize(GetComponent<SpriteRenderer>());
-			ModifiedParamsFromDifficult();
+			ModifiyParamsFromDifficulty();
 		}
     }
 
-	private void ModifiedParamsFromDifficult()
+	private void ModifiyParamsFromDifficulty()
 	{
-		rotateSpeed = 5 * World.newWorld.Difficulty;
-		shootForce = 4 * World.newWorld.Difficulty;
-		flySpeed = 6 * World.newWorld.Difficulty;
-		dmg = 3 * World.newWorld.Difficulty;
-		maxShootRate /= World.newWorld.Difficulty;
+		rotateSpeed = BASE_SHIP_ROTATE_SPEED * World.newWorld.Difficulty;
+		shootForce = BASE_SHIP_SHOOT_FORCE * World.newWorld.Difficulty;
+		flySpeed = BASE_SHIP_FLY_SPEED * World.newWorld.Difficulty;
+		damage = BASE_SHIP_DAMAGE * World.newWorld.Difficulty;
+		shootRate *= World.newWorld.Difficulty;
 	}
 
 	public virtual void Start()
@@ -58,24 +62,17 @@ public class BaseShip : MonoBehaviour
 		StartCoroutine(Shooting());
 
 		if (respawnEvent == null)
+		{
 			respawnEvent = new UnityEvent();
+		}
+			
 	}
 
 	private IEnumerator Shooting()
 	{
-		while (true)
-		{
-			if (useRandomShootRange)
-			{
-				yield return new WaitForSeconds(Random.Range(1, maxShootRate));
-				Shoot();
-			}
-			else
-			{
-				yield return new WaitForSeconds(maxShootRate);
-				Shoot();
-			}
-		}
+		var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
+		yield return new WaitForSeconds(waitTime);
+		Shoot();
 	}
 
 	private void Update()
@@ -142,10 +139,10 @@ public class BaseShip : MonoBehaviour
 	/// </summary>
 	public virtual void Shoot()
 	{
-		PoolObject bullet = PoolManager.Get(bulletType);
-		Bullet bulletParams = bullet.GetComponent<Bullet>();
-		Transform bulletTransform = bullet.transform;
-		Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+		PoolObject bulletObject = PoolManager.Get(bulletType);
+		Bullet bullet = bulletObject.GetComponent<Bullet>();
+		Transform bulletTransform = bulletObject.transform;
+		Rigidbody2D bulletRb = bulletObject.GetComponent<Rigidbody2D>();
 
 		bulletTransform.rotation = transform.rotation;
 		bulletTransform.position = transform.position;
@@ -153,24 +150,22 @@ public class BaseShip : MonoBehaviour
 
 		if (target != null)
 		{
-			var playereDir = target.position - transform.position;
-			playereDir = playereDir.normalized;
-			bulletRb.AddForce(playereDir * shootForce);
+			Vector3 playerDirection = target.position - transform.position;
+			playerDirection = playerDirection.normalized;
+			bulletRb.AddForce(playerDirection * shootForce);
 		}
 		else
 		{
 			bulletRb.AddForce(-transform.up * shootForce);
 		}
 
-		bulletParams.dmg = dmg;
-
-		bulletParams.Shoot();
+		bullet.damage = damage;
 	}
 
 	public virtual void DestroyShip()
 	{
-		//PoolObject fx = PoolManager.Get(7);
-		//fx.transform.position = transform.position;
+		PoolObject fx = PoolManager.Get(7);
+		fx.transform.position = transform.position;
 		Destroy(gameObject);
 	}
 }

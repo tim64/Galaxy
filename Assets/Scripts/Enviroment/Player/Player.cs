@@ -1,19 +1,19 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityNightPool;
+using static Constants;
 
 public class Player : MonoBehaviour
 {
-	public float speed = 2.0f;
+	public float speed = PLAYER_SPEED;
 
 	private bool isShooting;
 	private readonly Rigidbody2D rb;
 	private Vector2 playerPos;
 
-	private readonly float shootRate = 0.2f;
-	private readonly float shootForce = 10;
+	private readonly float reloadingTime = PLAYER_RELOADING_TIME;
+	private readonly float shootForce = PLAYER_SHOOT_FORCE;
 
-	public int hp = 100;
+	public float hp = PLAYER_MAX_HP;
 
 	private void Start() => playerPos = transform.position;
 
@@ -27,9 +27,8 @@ public class Player : MonoBehaviour
             bullet.transform.position = transform.position;
 
 			bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * shootForce);
-			bullet.GetComponent<Bullet>().Shoot();
 
-			LeanTween.delayedCall(shootRate, () => isShooting = false);
+			LeanTween.delayedCall(reloadingTime, () => isShooting = false);
         }
 
 		float xPos = transform.position.x + (Input.GetAxis("Horizontal") * speed);
@@ -37,7 +36,7 @@ public class Player : MonoBehaviour
 		transform.position = playerPos;
 	}
 
-	public void Damage(int damage)
+	public void Damage(float damage)
 	{
 		hp -= damage;
 

@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using static Constants;
 
 public class FleetControl : MonoBehaviour
 {
 	public ShipBuilder builder;
 
 	private BaseShip[] ships;
-	private readonly int attackRate = 2; //TODO: Вынести в JSON
-	private readonly Transform shipSquad;
 	private Transform player;
 	private Vector2 shipStartPos;
 	private Coroutine attackCoroutine;
 
 	private void Start()
 	{
-		player = GameObject.Find("AttackPoint").transform;
+		player = WaypointController.instance.attakPoint;
 		ships = GetComponentsInChildren<BaseShip>();
 		attackCoroutine = StartCoroutine(Attack());
 	}
@@ -25,7 +22,7 @@ public class FleetControl : MonoBehaviour
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(attackRate);
+			yield return new WaitForSeconds(FLEET_ATTACK_RATE);
 			BaseShip ship = GetRandomShip();
 			if (ship != null)
 			{
@@ -73,7 +70,7 @@ public class FleetControl : MonoBehaviour
 		bossShip.transform.position = bossRespPoint.transform.position;
 
 		//Интро. Босс спускается к игроку
-		LeanTween.moveLocalY(bossShip, bossGamePoint.position.y, 5).setOnComplete(() => bossShip.GetComponent<BossShip>().StartAttack());
+		LeanTween.moveLocalY(bossShip, bossGamePoint.position.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossShip>().StartAttackPhase());
 	}
 
 	private void StopAttack() => StopCoroutine(attackCoroutine);
