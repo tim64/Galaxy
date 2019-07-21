@@ -2,7 +2,7 @@
 using UnityEngine;
 using static Constants;
 
-public class FleetControl : MonoBehaviour
+public class FleetController : MonoBehaviour
 {
 	public ShipBuilder builder;
 
@@ -70,7 +70,7 @@ public class FleetControl : MonoBehaviour
 		bossShip.transform.position = bossRespPoint.transform.position;
 
 		//Интро. Босс спускается к игроку
-		LeanTween.moveLocalY(bossShip, bossGamePoint.position.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossShip>().StartAttackPhase());
+		LeanTween.moveLocalY(bossShip, bossGamePoint.position.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossSuperShip>().StartAttackPhase());
 	}
 
 	private void StopAttack() => StopCoroutine(attackCoroutine);

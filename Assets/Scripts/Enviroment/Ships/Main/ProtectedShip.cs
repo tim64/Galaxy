@@ -29,6 +29,7 @@ public class ProtectedShip : BaseShip
 	{
 		if (onProtected)
 		{
+			attackState = true;
 			onProtected = false;
 			Destroy(armor);
 		}

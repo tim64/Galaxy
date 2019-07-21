@@ -45,3 +45,7 @@ MonoBehaviour:
       type: 3}
     id: 8
     switchGameObject: 1
+  - prefab: {fileID: 5289943696146555484, guid: f24a3037f1c124387813d9deda94975a,
+      type: 3}
+    id: 9
+    switchGameObject: 1

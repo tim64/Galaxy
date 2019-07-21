@@ -9,7 +9,7 @@ public class LevelController : MonoBehaviour
 	/// <summary>
 	/// Текущий уровень
 	/// </summary>
-	public static int currentLevel;
+	public static int currentLevelIndex = 1;
 
 	/// <summary>
 	/// Данный метод вызывается через UI event на кнопках
@@ -17,7 +17,7 @@ public class LevelController : MonoBehaviour
 	/// <param name="levelId"></param>
 	public void LevelSelect(int levelId)
 	{
-		currentLevel = levelId;
+		currentLevelIndex = levelId;
 		SceneManager.LoadScene(2);
 	}
 }

@@ -50,11 +50,13 @@ public class BaseShip : MonoBehaviour
 
 	private void ModifiyParamsFromDifficulty()
 	{
-		rotateSpeed = BASE_SHIP_ROTATE_SPEED * World.newWorld.Difficulty;
-		shootForce = BASE_SHIP_SHOOT_FORCE * World.newWorld.Difficulty;
-		flySpeed = BASE_SHIP_FLY_SPEED * World.newWorld.Difficulty;
-		damage = BASE_SHIP_DAMAGE * World.newWorld.Difficulty;
-		shootRate *= World.newWorld.Difficulty;
+		int difficulty = Level.newWorld.Difficulty;
+
+		rotateSpeed = BASE_SHIP_ROTATE_SPEED * difficulty;
+		shootForce = BASE_SHIP_SHOOT_FORCE * difficulty;
+		flySpeed = BASE_SHIP_FLY_SPEED * difficulty;
+		damage = BASE_SHIP_DAMAGE * difficulty;
+		shootRate *= difficulty;
 	}
 
 	public virtual void Start()
@@ -70,9 +72,12 @@ public class BaseShip : MonoBehaviour
 
 	private IEnumerator Shooting()
 	{
-		var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
-		yield return new WaitForSeconds(waitTime);
-		Shoot();
+		while (true)
+		{
+			var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
+			yield return new WaitForSeconds(waitTime);
+			Shoot();
+		}
 	}
 
 	private void Update()
@@ -90,8 +95,11 @@ public class BaseShip : MonoBehaviour
 	/// </summary>
 	public virtual void Move()
 	{
-		float dist = flySpeed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards(transform.position, target.position, dist);
+		if (target != null)
+		{
+			float dist = flySpeed * Time.deltaTime;
+			transform.position = Vector3.MoveTowards(transform.position, target.position, dist);
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -112,10 +120,13 @@ public class BaseShip : MonoBehaviour
 
 	private void Rotate()
 	{
-		Vector2 relativePos = target.position - transform.position;
-		Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.forward);
-		rotation.x = rotation.y = 0.0f;
-		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotateSpeed);
+		if (target != null)
+		{
+			Vector2 relativePos = target.position - transform.position;
+			Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.forward);
+			rotation.x = rotation.y = 0.0f;
+			transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotateSpeed);
+		}
 	}
 
 	/// <summary>

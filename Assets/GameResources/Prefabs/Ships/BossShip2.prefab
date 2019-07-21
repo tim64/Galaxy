@@ -94,17 +94,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2461a37fcf354c01a707788caaac3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletType: 3
-  explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
-    type: 3}
   useRandomColor: 0
-  attackState: 0
-  target: {fileID: 0}
   respawnEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  bulletType: 3
+  explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
+    type: 3}
+  attackState: 0
+  target: {fileID: 0}
 --- !u!50 &1139246442650212048
 Rigidbody2D:
   serializedVersion: 4
@@ -154,9 +154,9 @@ GameObject:
   - component: {fileID: 1139246442966365835}
   - component: {fileID: 1139246442966365834}
   - component: {fileID: 1139246442966365833}
-  - component: {fileID: 1139246442966365832}
+  - component: {fileID: 2131634497123752725}
   m_Layer: 0
-  m_Name: BossShip
+  m_Name: BossShip2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HSLShader: {fileID: 4800000, guid: ccddce15ca4a44ff29e4bab139672062, type: 3}
---- !u!114 &1139246442966365832
+  autoColorize: 0
+--- !u!114 &2131634497123752725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,21 +275,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1139246442966365839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 219365c8a5e4841edadc29ba8cb32ebf, type: 3}
+  m_Script: {fileID: 11500000, guid: bee7f2f185a2e4805b7057b23f93f8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletType: 8
-  explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
-    type: 3}
   useRandomColor: 1
-  attackState: 0
-  target: {fileID: 0}
   respawnEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  attack: 0
+  bulletType: 4
+  explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
+    type: 3}
+  attackState: 0
+  target: {fileID: 0}
+  attackPhase: 0
 --- !u!1 &1139246444442075892
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,17 +384,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2461a37fcf354c01a707788caaac3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletType: 3
-  explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
-    type: 3}
   useRandomColor: 0
-  attackState: 0
-  target: {fileID: 0}
   respawnEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  bulletType: 3
+  explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
+    type: 3}
+  attackState: 0
+  target: {fileID: 0}
 --- !u!50 &1139246444442075889
 Rigidbody2D:
   serializedVersion: 4

@@ -37,7 +37,7 @@ public class AngryShip : BaseShip
 			if (isRaged)
 			{
 				shootRate = ANGRY_SHIP_RAGE_SHOOT_RATE;
-				LeanTween.rotateAroundLocal(gameObject, Vector3.forward, 360, ANGRY_SHIP_RAGE_ANIMATION_TIME);
+				LeanTween.rotateAroundLocal(gameObject, Vector3.back, 360, ANGRY_SHIP_RAGE_ANIMATION_TIME);
 			}
 			else
 			{

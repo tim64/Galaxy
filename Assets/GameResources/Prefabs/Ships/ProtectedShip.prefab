@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4057008069776773376}
   - component: {fileID: 4057008069776773377}
   - component: {fileID: 6679936499142472377}
-  - component: {fileID: 5833180581437691604}
   - component: {fileID: -5504906923732534830}
+  - component: {fileID: 4175118803111957114}
   m_Layer: 0
   m_Name: ProtectedShip
   m_TagString: Enemy
@@ -107,32 +107,6 @@ MonoBehaviour:
   target: {fileID: 0}
   protectFXPrefab: {fileID: 3013120957772326404, guid: beeb435301dad4df687a8b9f20a2e431,
     type: 3}
---- !u!61 &5833180581437691604
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4057008069776773379}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.52, y: 2.4}
-    newSize: {x: 2.56, y: 2.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.19, y: 2.43}
-  m_EdgeRadius: 0
 --- !u!114 &-5504906923732534830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,3 +121,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HSLShader: {fileID: 4800000, guid: ccddce15ca4a44ff29e4bab139672062, type: 3}
   autoColorize: 0
+--- !u!58 &4175118803111957114
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4057008069776773379}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.26

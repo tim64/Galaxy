@@ -713,6 +713,7 @@ MonoBehaviour:
   - {fileID: 4057008069776773379, guid: 9dfc6465222614ef6a3cb56e5a0b3b38, type: 3}
   - {fileID: 4057008069776773379, guid: e9e32fb4e43a8492ea35c89b3014f8bb, type: 3}
   bossShipPrefabs:
+  - {fileID: 1139246442966365839, guid: 4465245a32e8347a0be9ea604b081b74, type: 3}
   - {fileID: 1139246442966365839, guid: 2a78a6c4405f446f49446bae13aefbfc, type: 3}
 --- !u!1 &833425607
 GameObject:
@@ -1120,7 +1121,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -130, y: 104}
-  m_SizeDelta: {x: 177, y: 178}
+  m_SizeDelta: {x: 181, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1257087533
 MonoBehaviour:

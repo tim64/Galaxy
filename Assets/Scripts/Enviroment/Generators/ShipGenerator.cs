@@ -14,14 +14,14 @@ public class ShipGenerator : MonoBehaviour
 	//Билдер кораблей на сцене
 	public ShipBuilder builder;
 
-	private World currentWorld;
+	private Level currentLevelData;
 	private GameObject shipContainer;
 
 
 	private void Start()
 	{
 		//Получаем параметры уровня из JSON
-		currentWorld = World.CreateFromJSON(JSON_PATH_WORLD1);
+		currentLevelData = Level.CreateFromJSON(JSON_PATH_LEVEL + LevelController.currentLevelIndex);
 
 		shipContainer = CreateShipContainer();
 
@@ -37,13 +37,13 @@ public class ShipGenerator : MonoBehaviour
 		shipContainer.AddComponent<ShipMovement>();
 
 		//Добавление скрипта управления кораблями
-		shipContainer.AddComponent<FleetControl>();
-		shipContainer.GetComponent<FleetControl>().builder = builder;
+		shipContainer.AddComponent<FleetController>();
+		shipContainer.GetComponent<FleetController>().builder = builder;
 	}
 
 	private void GenerateShips()
 	{
-		int worldShipCount = currentWorld.ShipCount;
+		int worldShipCount = currentLevelData.ShipCount;
 		for (int i = 0; i < worldShipCount; i++)
 		{
 			CreateRandomShip();

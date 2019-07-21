@@ -21,7 +21,7 @@
 	//Различные пути и префиксы
 
 	//Пусть к конфигам миров
-	public static string JSON_PATH_WORLD1 = "Data/World Configs/World1";
+	public static string JSON_PATH_LEVEL = "Data/Level Configs/Level";
 
 	//Путь к папке с спрайтами кораблей
 	public static string SHIP_SPRITE_PATH = "Ships/";

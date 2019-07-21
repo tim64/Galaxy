@@ -6,9 +6,9 @@ using UnityEngine;
 /// Класс описывает игровой уровень и его параметры. 
 /// Все параметры берутся из JSON
 /// </summary>
-public class World
+public class Level
 {
-	public static World newWorld;
+	public static Level newWorld;
 
 	[SerializeField]
 	private string _worldId;
@@ -55,7 +55,7 @@ public class World
 	/// </summary>
 	/// <param name="jsonString"></param>
 	/// <returns></returns>
-	public static World CreateFromJSON(string jsonString)
+	public static Level CreateFromJSON(string jsonString)
     {
 		if (newWorld != null)
 		{
@@ -64,7 +64,7 @@ public class World
 		else
 		{
 			var jsonTextFile = Resources.Load<TextAsset>(jsonString);
-			newWorld = JsonUtility.FromJson<World>(jsonTextFile.text);
+			newWorld = JsonUtility.FromJson<Level>(jsonTextFile.text);
 			return newWorld;
 		}
     }
