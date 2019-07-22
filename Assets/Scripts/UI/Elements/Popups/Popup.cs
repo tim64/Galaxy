@@ -10,6 +10,8 @@ public class Popup : MonoBehaviour
 	[HideInInspector]
 	public UnityEvent onOpen;
 
+	private bool isOpen;
+
 	private void Awake()
 	{
 		if (onClose == null)
@@ -25,13 +27,17 @@ public class Popup : MonoBehaviour
 
 	public void Close()
 	{
-		Time.timeScale = gameObject.activeSelf ? 0 : 1;
-		onClose.Invoke();
+		isOpen = !isOpen;
+		Time.timeScale = isOpen ? 0 : 1;
+		gameObject.SetActive(isOpen);
+		onOpen.Invoke();
 	}
 
 	public void Open()
 	{
-		Time.timeScale = gameObject.activeSelf ? 0 : 1;
+		isOpen = !isOpen;
+		Time.timeScale = isOpen ? 0 : 1;
+		gameObject.SetActive(isOpen);
 		onOpen.Invoke();
 	}
 }

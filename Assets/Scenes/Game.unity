@@ -268,7 +268,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 95108248}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1321274981}
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &95108248
@@ -586,7 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee02121b76db64a42bbdcbe1f47727ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePopup: {fileID: 1321274977}
+  pausePopup: {fileID: 1321274981}
 --- !u!1 &331669696
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +627,7 @@ Transform:
   m_GameObject: {fileID: 331669696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -14.03, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1159977380}
   m_Father: {fileID: 1034602319}
@@ -2005,7 +2016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -149.4, y: 111.899994}
+  m_AnchoredPosition: {x: -149.40039, y: 111.899414}
   m_SizeDelta: {x: 119.8, y: 55.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1257087533
@@ -2176,15 +2187,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1321274977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b16421b65ed341598fdb54446ed02a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fc8384eaec23481faf2cc6a54411d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupClose:
+  onClose:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_CallsDirty: 1
+  onOpen:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1399296133
 GameObject:
   m_ObjectHideFlags: 0
