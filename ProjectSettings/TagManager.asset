@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - MainCanvas
   - MainBackground
+  - UI
   layers:
   - Default
   - TransparentFX
