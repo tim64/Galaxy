@@ -14,7 +14,7 @@
 	public static int FLEET_HORIZONTAL_INDEX = 3;
 
 	//Скорость вызова кораблей для атаки
-	public static int FLEET_ATTACK_RATE = 2;
+	public static int FLEET_ATTACK_RATE = 5;
 
 	public static int FLEET_MOVE_TIME_X = 2;
 	public static int FLEET_MAX_POS_X = 10;
@@ -82,6 +82,7 @@
 	public static float BASE_SHIP_DAMAGE = 3;
 	public static float SHOOT_RATE_MAX = 5;
 	public static float BASE_SHIP_CRUSH_DAMAGE = 20;
+	public static float BASE_SHIP_HP = 20;
 	#endregion
 
 	#region Angry Ship Params
@@ -113,6 +114,7 @@
 	public static float BOSS_SHOOT_RATE = 10;
 	public static float BOSS_DAMAGE = 5;
 	public static float BOSS_SHOOT_FORCE = 8;
+	public static float BOSS_HP = 200;
 	#endregion
 
 	#region Boss Gun Params
@@ -126,6 +128,8 @@
 	public static float PLAYER_RELOADING_TIME = 0.2f;
 	public static float PLAYER_SHOOT_FORCE = 10;
 	public static float PLAYER_MAX_HP = 100;
+	public static float PLAYER_MAX_X_POSITION = 20;
+	public static float PLAYER_DAMAGE = 7;
 	#endregion
 
 	#region Pool Id's
