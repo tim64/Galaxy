@@ -27,7 +27,7 @@ public class AngryShip : BaseShip
 	/// <returns></returns>
 	private IEnumerator Rage()
 	{
-		while (true)
+		while (true && !attackState)
 		{
 			//Добавляем случайное значение, чтобы было разнообразие в поведении кораблей
 			yield return new WaitForSeconds(ANGRY_SHIP_RAGE_PERIOD + ANGRY_SHIP_RAGE_ANIMATION_TIME + Random.Range(-1, 2));
@@ -37,7 +37,7 @@ public class AngryShip : BaseShip
 			if (isRaged)
 			{
 				shootRate = ANGRY_SHIP_RAGE_SHOOT_RATE;
-				LeanTween.rotateAroundLocal(gameObject, Vector3.back, 360, ANGRY_SHIP_RAGE_ANIMATION_TIME);
+				LeanTween.rotateAroundLocal(gameObject, Vector3.back, -360, ANGRY_SHIP_RAGE_ANIMATION_TIME);
 			}
 			else
 			{

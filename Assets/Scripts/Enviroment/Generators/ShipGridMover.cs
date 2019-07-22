@@ -2,7 +2,7 @@
 using static Constants;
 
 /// <summary>
-/// Класс, который перемешивает корабли из сцены (из объекта ShipContainer) и расставляет их по сетке
+/// Класс, который расставляет корабли по сетке
 /// </summary>
 /// <param name="ShipContainer"></param>
 public class ShipGridMover : MonoBehaviour
@@ -12,7 +12,7 @@ public class ShipGridMover : MonoBehaviour
 
 
 	/// <summary>
-	/// Метод, который перемешивает готовые корабли и расставляет их по сетке
+	/// Метод, который расставляет корабли по сетке
 	/// Основной метод класса
 	/// </summary>
 	/// <param name="shipContainer"></param>

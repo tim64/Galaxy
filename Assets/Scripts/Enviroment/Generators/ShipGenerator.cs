@@ -28,7 +28,8 @@ public class ShipGenerator : MonoBehaviour
 		GenerateShips();
 
 		//Размещение кораблей по сетке
-		ShipGridMover ShipMover = new ShipGridMover();
+		//ShipGridMover ShipMover = new ShipGridMover();
+		ShipGridMover ShipMover = gameObject.AddComponent<ShipGridMover>();
 		ShipMover.MoveShipsOnGrid(shipContainer);
 
 		shipContainer.transform.localPosition = WaypointController.instance.gameCenter.position;

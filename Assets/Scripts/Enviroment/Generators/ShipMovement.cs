@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
+using static Constants;
 
 /// <summary>
 /// Класс реализует перемещение флота кораблей в "старом стиле", по шагам
 /// </summary>
 public class ShipMovement : MonoBehaviour
 {
-	private readonly int moveXTime = 2;
-	private readonly int maxPosX = 10;
-	private readonly int currentMaxPosX = 5;
+	private readonly int moveXTime = FLEET_MOVE_TIME_X;
+	private readonly int maxPosX = FLEET_MAX_POS_X;
+	private readonly int currentMaxPosX = FLEET_CURRENT_POS_X;
 
 	private int posX;
 	private int posY = -1;

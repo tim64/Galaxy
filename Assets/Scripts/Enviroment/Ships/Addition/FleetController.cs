@@ -26,7 +26,6 @@ public class FleetController : MonoBehaviour
 			BaseShip ship = GetRandomShip();
 			if (ship != null)
 			{
-				GameObject shipPlaceholder = new GameObject();
 				ship.respawnEvent.AddListener(() => RespawnShip(ship));
 				MoveShip(ship);
 			}	
@@ -43,7 +42,6 @@ public class FleetController : MonoBehaviour
 
 	private BaseShip GetRandomShip()
 	{
-		ships = GetComponentsInChildren<BaseShip>();
 		if (ships.Length > 0)
 		{
 			return ships[Random.Range(0, ships.Length)];
@@ -60,17 +58,17 @@ public class FleetController : MonoBehaviour
 	private void SummonBoss()
 	{
 		//Точка появления босса
-		Transform bossRespPoint = WaypointController.instance.bossRespPoint;
+		Vector2 bossRespPoint = WaypointController.instance.bossRespPoint.position;
 
 		//Точка где заканчивается интро-анимация
-		Transform bossGamePoint = WaypointController.instance.bossGamePoint;
+		Vector2 bossGamePoint = WaypointController.instance.bossGamePoint.position;
 
 		//Создание босса
 		GameObject bossShip = builder.CreateBossShip();
-		bossShip.transform.position = bossRespPoint.transform.position;
+		bossShip.transform.position = bossRespPoint;
 
 		//Интро. Босс спускается к игроку
-		LeanTween.moveLocalY(bossShip, bossGamePoint.position.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossSuperShip>().StartAttackPhase());
+		LeanTween.moveLocalY(bossShip, bossGamePoint.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossSuperShip>().StartAttackPhase());
 	}
 
 	private void StopAttack() => StopCoroutine(attackCoroutine);

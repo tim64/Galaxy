@@ -21,3 +21,15 @@ MonoBehaviour:
       type: 3}
     id: 2
     switchGameObject: 1
+  - prefab: {fileID: 5289943696146555484, guid: f24a3037f1c124387813d9deda94975a,
+      type: 3}
+    id: 3
+    switchGameObject: 1
+  - prefab: {fileID: -2146905527048645493, guid: 8f1ae262725754a6bbeca502c6adf1ef,
+      type: 3}
+    id: 4
+    switchGameObject: 1
+  - prefab: {fileID: 7271571026295841151, guid: 1b08465f1efa84de4bc761f18da6115c,
+      type: 3}
+    id: 5
+    switchGameObject: 1

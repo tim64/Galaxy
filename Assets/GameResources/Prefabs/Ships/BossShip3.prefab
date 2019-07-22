@@ -100,7 +100,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  bulletType: 3
   explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
     type: 3}
   attackState: 0
@@ -280,13 +279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ac9c42a02564d87aaa769d9f2af3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useRandomColor: 0
+  useRandomColor: 1
   respawnEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  bulletType: 5
   explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
     type: 3}
   attackState: 0
@@ -392,7 +390,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  bulletType: 3
   explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
     type: 3}
   attackState: 0
@@ -534,7 +531,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  bulletType: 3
   explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
     type: 3}
   attackState: 0
@@ -676,7 +672,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  bulletType: 3
   explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
     type: 3}
   attackState: 0

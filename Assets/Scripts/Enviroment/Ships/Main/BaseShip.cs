@@ -19,7 +19,6 @@ public class BaseShip : MonoBehaviour
 	public UnityEvent respawnEvent;
 
 	[Header("FX")]
-	private int bulletType = 1;
 	public GameObject explosionFX;
 
 
@@ -44,13 +43,14 @@ public class BaseShip : MonoBehaviour
 		{
 			ShipColorizer colorizer = GetComponentInChildren<ShipColorizer>();
 			colorizer.RandomColorize(GetComponent<SpriteRenderer>());
-			ModifiyParamsFromDifficulty();
 		}
-    }
+
+		ModifiyParamsFromDifficulty();
+	}
 
 	private void ModifiyParamsFromDifficulty()
 	{
-		int difficulty = Level.newWorld.Difficulty;
+		float difficulty = Level.newWorld.Difficulty;
 
 		rotateSpeed = BASE_SHIP_ROTATE_SPEED * difficulty;
 		shootForce = BASE_SHIP_SHOOT_FORCE * difficulty;
@@ -67,7 +67,7 @@ public class BaseShip : MonoBehaviour
 		{
 			respawnEvent = new UnityEvent();
 		}
-			
+
 	}
 
 	private IEnumerator Shooting()
@@ -98,6 +98,7 @@ public class BaseShip : MonoBehaviour
 		if (target != null)
 		{
 			float dist = flySpeed * Time.deltaTime;
+			Debug.Log(flySpeed + " " + dist);
 			transform.position = Vector3.MoveTowards(transform.position, target.position, dist);
 		}
 	}
@@ -107,7 +108,7 @@ public class BaseShip : MonoBehaviour
 		if (collision.gameObject.tag == "Player")
 		{
 			attackState = false;
-			collision.gameObject.GetComponent<Player>().Damage(20);
+			collision.gameObject.GetComponent<Player>().Damage(BASE_SHIP_CRUSH_DAMAGE);
 			DestroyShip();
 		}
 
@@ -150,7 +151,7 @@ public class BaseShip : MonoBehaviour
 	/// </summary>
 	public virtual void Shoot()
 	{
-		PoolObject bulletObject = PoolManager.Get(bulletType);
+		PoolObject bulletObject = PoolManager.Get(POOL_BULLET_ID);
 		Bullet bullet = bulletObject.GetComponent<Bullet>();
 		Transform bulletTransform = bulletObject.transform;
 		Rigidbody2D bulletRb = bulletObject.GetComponent<Rigidbody2D>();
@@ -175,8 +176,8 @@ public class BaseShip : MonoBehaviour
 
 	public virtual void DestroyShip()
 	{
-		//PoolObject fx = PoolManager.Get(7);
-		//fx.transform.position = transform.position;
+		PoolObject fx = PoolManager.Get(POOL_EXPLOSION_ID);
+		fx.transform.position = transform.position;
 		Destroy(gameObject);
 	}
 }

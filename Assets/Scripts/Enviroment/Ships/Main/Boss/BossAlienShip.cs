@@ -28,8 +28,12 @@ public class BossAlienShip : BossSuperShip
 	{
 		while (true)
 		{
-			LeanTween.moveLocalX(gameObject, -15, 2).setOnComplete(() => LeanTween.moveLocalX(gameObject, 15, 4));
-			yield return new WaitForSeconds(6);
+			LeanTween.moveLocalX(gameObject, -BOSS_HORIZONTAL_MAX_X, BOSS_HORIZONTAL_FLY_TIME).setOnComplete(() => LeanTween.moveLocalX(
+				gameObject,
+				BOSS_HORIZONTAL_MAX_X,
+				BOSS_HORIZONTAL_FLY_TIME * 2));
+
+			yield return new WaitForSeconds(BOSS_HORIZONTAL_FLY_PERIOD);
 		}
 	}
 

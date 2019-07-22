@@ -29,8 +29,8 @@ public class BossMegaShip : BossSuperShip
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(1);
-			PoolObject shipObject = PoolManager.Get(9);
+			yield return new WaitForSeconds(BOSS_JET_SPAWN_TIME);
+			PoolObject shipObject = PoolManager.Get(POOL_BOSS_SHIP_ID);
 			shipObject.transform.position = transform.position;
 			BaseShip ship = shipObject.GetComponent<BaseShip>();
 			ship.target = WaypointController.instance.attakPoint;
