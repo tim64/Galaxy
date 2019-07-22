@@ -29,6 +29,7 @@ public class BaseShip : MonoBehaviour
 	public Transform target;
 
 	//Параметры корабля
+	protected float hp = BASE_SHIP_HP;
 	protected float shootRate = BASE_SHIP_SHOOT_RATE;
 	protected float rotateSpeed = BASE_SHIP_ROTATE_SPEED;
 	protected float shootForce = BASE_SHIP_SHOOT_FORCE;
@@ -98,7 +99,6 @@ public class BaseShip : MonoBehaviour
 		if (target != null)
 		{
 			float dist = flySpeed * Time.deltaTime;
-			Debug.Log(flySpeed + " " + dist);
 			transform.position = Vector3.MoveTowards(transform.position, target.position, dist);
 		}
 	}
@@ -174,7 +174,16 @@ public class BaseShip : MonoBehaviour
 		bullet.damage = damage;
 	}
 
-	public virtual void DestroyShip()
+	public virtual void DamageShip(float damage)
+	{
+		if ((hp -= damage) <= 0)
+		{
+			DestroyShip();
+		}
+	}
+
+
+	protected virtual void DestroyShip()
 	{
 		PoolObject fx = PoolManager.Get(POOL_EXPLOSION_ID);
 		fx.transform.position = transform.position;

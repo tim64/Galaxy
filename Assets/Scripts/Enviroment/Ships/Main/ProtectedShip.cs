@@ -8,8 +8,11 @@ public class ProtectedShip : BaseShip
     private bool onProtected = true;
 	private GameObject armor;
 
+	private float armorHP;
+
 	public override void Start()
 	{
+		armorHP = hp;
 		base.Start();
 		CreateProtected();
 	}
@@ -22,20 +25,22 @@ public class ProtectedShip : BaseShip
     }
 
 	/// <summary>
-	/// Метод уничтожения корабля. Основное поведение наследуется от базового класса
 	/// Данный вид корабля сначала унечтожает силовое поле
 	/// </summary>
-	public override void DestroyShip()
+	public override void DamageShip(float damage)
 	{
 		if (onProtected)
 		{
-			attackState = true;
-			onProtected = false;
-			Destroy(armor);
+			if ((armorHP -= damage) <= 0)
+			{
+				attackState = true;
+				onProtected = false;
+				Destroy(armor);
+			}
 		}
 		else
 		{
-			base.DestroyShip();
+			base.DamageShip(damage);
 		}
 	}
 }

@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 		{
 			if (isPlayerBullet)
 			{
-				collision.GetComponent<BaseShip>().DestroyShip();
+				collision.GetComponent<BaseShip>().DamageShip(damage);
 				GetComponent<PoolObject>().Return();
 				
 			}

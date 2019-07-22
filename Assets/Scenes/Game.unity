@@ -207,8 +207,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e24c8a888c9a04597a3824f21b3809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  hp: 1000
+  damageEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  lastDamage: 0
 --- !u!58 &331669700
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -224,7 +228,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.6}
   serializedVersion: 2
-  m_Radius: 1.01
+  m_Radius: 1.8
 --- !u!50 &331669701
 Rigidbody2D:
   serializedVersion: 4
@@ -1054,8 +1058,9 @@ MonoBehaviour:
   - {fileID: 4057008069776773379, guid: 9dfc6465222614ef6a3cb56e5a0b3b38, type: 3}
   - {fileID: 4057008069776773379, guid: e9e32fb4e43a8492ea35c89b3014f8bb, type: 3}
   bossShipPrefabs:
-  - {fileID: 1139246442966365839, guid: 4465245a32e8347a0be9ea604b081b74, type: 3}
+  - {fileID: 1139246442966365839, guid: 531ac2b2d30c9442297becd0266a907e, type: 3}
   - {fileID: 1139246442966365839, guid: 2a78a6c4405f446f49446bae13aefbfc, type: 3}
+  - {fileID: 1139246442966365839, guid: 4465245a32e8347a0be9ea604b081b74, type: 3}
 --- !u!1 &833425607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1073619313}
+  - component: {fileID: 1073619314}
   m_Layer: 0
   m_Name: LifeBar
   m_TagString: Untagged
@@ -1266,6 +1272,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 881.5, y: 129.4}
   m_Pivot: {x: 1, y: 1}
+--- !u!114 &1073619314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073619312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e0226b0feaa4625986f575f0d83433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1693577530}
+  player: {fileID: 331669699}
 --- !u!1 &1084498766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,9 +1760,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 521851933}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1993,7 +2013,7 @@ GameObject:
   - component: {fileID: 2031807884}
   - component: {fileID: 2031807883}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

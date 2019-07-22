@@ -27,7 +27,7 @@ public class AngryShip : BaseShip
 	/// <returns></returns>
 	private IEnumerator Rage()
 	{
-		while (true && !attackState)
+		while (true && target != null)
 		{
 			//Добавляем случайное значение, чтобы было разнообразие в поведении кораблей
 			yield return new WaitForSeconds(ANGRY_SHIP_RAGE_PERIOD + ANGRY_SHIP_RAGE_ANIMATION_TIME + Random.Range(-1, 2));

@@ -14,7 +14,7 @@ public class FleetController : MonoBehaviour
 	private void Start()
 	{
 		player = WaypointController.instance.attakPoint;
-		ships = GetComponentsInChildren<BaseShip>();
+
 		attackCoroutine = StartCoroutine(Attack());
 	}
 
@@ -23,6 +23,7 @@ public class FleetController : MonoBehaviour
 		while (true)
 		{
 			yield return new WaitForSeconds(FLEET_ATTACK_RATE);
+			ships = GetComponentsInChildren<BaseShip>();
 			BaseShip ship = GetRandomShip();
 			if (ship != null)
 			{
@@ -49,6 +50,7 @@ public class FleetController : MonoBehaviour
 		else
 		{
 			//Конец битвы и возов босса
+			Debug.Log("StopAttack");
 			StopAttack();
 			SummonBoss();
 			return null;

@@ -17,6 +17,7 @@ public class BossSuperShip : BaseShip
 
 	private void Awake()
 	{
+		hp = BOSS_HP;
 		shootRate = BOSS_SHOOT_RATE;
 		damage = BOSS_DAMAGE;
 		shootForce = BOSS_SHOOT_FORCE;
