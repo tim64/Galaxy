@@ -50,7 +50,6 @@ public class FleetController : MonoBehaviour
 		else
 		{
 			//Конец битвы и возов босса
-			Debug.Log("StopAttack");
 			StopAttack();
 			SummonBoss();
 			return null;

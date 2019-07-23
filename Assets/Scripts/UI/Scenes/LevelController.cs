@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Constants;
 
 /// <summary>
 /// Класс для выбора текущего уровня и перехода к сцене Game
@@ -18,6 +20,12 @@ public class LevelController : MonoBehaviour
 	public void LevelSelect(int levelId)
 	{
 		currentLevelIndex = levelId;
-		SceneManager.LoadScene(2);
+		SceneManager.LoadScene(SCENE_GAME);
+	}
+
+	public static void GoToNextLevel()
+	{
+		currentLevelIndex += 1;
+		SceneManager.LoadScene(SCENE_GAME);
 	}
 }

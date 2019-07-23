@@ -31,8 +31,11 @@ public class TeleportShip : BaseShip
 
 	private void TeleportShipAction()
 	{
-		transform.position = Random.insideUnitCircle * TELEPORT_SHIP_RADIUS;
-		PoolObject fx = PoolManager.Get(POOL_TELEPORT_FX_ID);
-		fx.transform.position = transform.position;
+		if (transform != null)
+		{
+			transform.position = Random.insideUnitCircle * TELEPORT_SHIP_RADIUS;
+			PoolObject fx = PoolManager.Get(POOL_TELEPORT_FX_ID);
+			fx.transform.position = transform.position;
+		}
 	}
 }

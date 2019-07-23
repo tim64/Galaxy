@@ -81,4 +81,13 @@ public class BossSuperShip : BaseShip
 			transform.position = startPos + (rightVector * xScale) - (upVector * yScale);
 		}
 	}
+
+	protected override void DestroyShip()
+	{
+		base.DestroyShip();
+
+		//Конец игры
+		//Конец игры
+		LeanTween.delayedCall(END_GAME_PAUSE_TIME, () => UIController.instance.EndGame(true));
+	}
 }

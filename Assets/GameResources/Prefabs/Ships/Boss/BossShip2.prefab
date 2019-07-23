@@ -100,7 +100,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  bulletType: 3
   explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
     type: 3}
   attackState: 0
@@ -236,7 +235,7 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -250,7 +249,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.19, y: 2.43}
+  m_Size: {x: 9.11, y: 11.14}
   m_EdgeRadius: 0
 --- !u!114 &1139246442966365833
 MonoBehaviour:
@@ -284,7 +283,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  bulletType: 4
   explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
     type: 3}
   attackState: 0
@@ -390,7 +388,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  bulletType: 3
   explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
     type: 3}
   attackState: 0

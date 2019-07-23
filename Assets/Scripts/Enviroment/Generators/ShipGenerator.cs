@@ -21,7 +21,7 @@ public class ShipGenerator : MonoBehaviour
 	private void Start()
 	{
 		//Получаем параметры уровня из JSON
-		currentLevelData = Level.CreateFromJSON(JSON_PATH_LEVEL + LevelController.currentLevelIndex);
+		currentLevelData = Level.CreateFromJSON(LevelController.currentLevelIndex);
 
 		shipContainer = CreateShipContainer();
 

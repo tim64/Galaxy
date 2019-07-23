@@ -25,7 +25,12 @@
 	//Различные пути и префиксы
 
 	//Пусть к конфигам миров
-	public static string JSON_PATH_LEVEL = "Data/Level Configs/Level";
+	public static string JSON_PATH_LEVEL_FOLDER = "Data/Level Configs/";
+	public static string JSON_PATH_LEVEL_FILENAME = "Level";
+	public static string JSON_PATH_LEVEL = JSON_PATH_LEVEL_FOLDER + JSON_PATH_LEVEL_FILENAME;
+
+	//Название папки с ресурсами
+	public static string RESOURCES_PATH = "/Resources/";
 
 	//Путь к папке с спрайтами кораблей
 	public static string SHIP_SPRITE_PATH = "Ships/";
@@ -68,10 +73,9 @@
 	#endregion
 
 	#region Scenes
-	public static int SCENE_MENU = 1;
-	public static int SCENE_LEVELS = 2;
-	public static int SCENE_LOADING = 3;
-	public static int SCENE_GAME = 4;
+	public static int SCENE_MENU = 0;
+	public static int SCENE_LEVELS = 1;
+	public static int SCENE_GAME = 2;
 	#endregion
 
 	#region Base Ship Params
@@ -140,5 +144,8 @@
 	public static int POOL_TELEPORT_FX_ID = 5;
 	#endregion
 
+	#region Timing
+	public static float END_GAME_PAUSE_TIME = 2f;
+	#endregion
 
 }

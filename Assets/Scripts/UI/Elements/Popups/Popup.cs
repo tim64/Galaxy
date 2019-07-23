@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using static Constants;
 
 public class Popup : MonoBehaviour
 {
@@ -39,5 +41,26 @@ public class Popup : MonoBehaviour
 		Time.timeScale = isOpen ? 0 : 1;
 		gameObject.SetActive(isOpen);
 		onOpen.Invoke();
+	}
+
+	public void RestartGame()
+	{
+		SceneManager.LoadScene(SCENE_GAME, LoadSceneMode.Single);
+	}
+
+	public void GoToMenu()
+	{
+		SceneManager.LoadScene(SCENE_MENU, LoadSceneMode.Single);
+	}
+
+	public void GoToNextLevel()
+	{
+		SceneManager.LoadScene(SCENE_GAME, LoadSceneMode.Single);
+		LevelController.GoToNextLevel();
+	}
+
+	private void OnDestroy()
+	{
+		Time.timeScale = 1;
 	}
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1139246442966365833}
   - component: {fileID: 7363038901213211838}
   m_Layer: 0
-  m_Name: BossShip2
+  m_Name: BossShip1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -106,7 +106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.19, y: 2.43}
+  m_Size: {x: 16.29, y: 12.78}
   m_EdgeRadius: 0
 --- !u!114 &1139246442966365833
 MonoBehaviour:
@@ -140,7 +140,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  bulletType: 4
   explosionFX: {fileID: 1888066530820231118, guid: 8f1ae262725754a6bbeca502c6adf1ef,
     type: 3}
   attackState: 0

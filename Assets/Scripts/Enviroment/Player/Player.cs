@@ -69,6 +69,9 @@ public class Player : MonoBehaviour
 		PoolObject fx = PoolManager.Get(POOL_EXPLOSION_ID);
 		fx.GetComponent<SpriteRenderer>().color = Color.yellow;
 		fx.transform.position = transform.position;
-		Destroy(gameObject);
+		gameObject.SetActive(false);
+
+		//Конец игры
+		LeanTween.delayedCall(END_GAME_PAUSE_TIME, () => UIController.instance.EndGame(false));
 	}
 }
