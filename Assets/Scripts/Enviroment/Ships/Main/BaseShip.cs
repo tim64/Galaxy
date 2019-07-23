@@ -37,9 +37,13 @@ public class BaseShip : MonoBehaviour
 	protected float damage = BASE_SHIP_DAMAGE;
 
 	protected bool useRandomShootRange = true;
+	protected bool isActivated = false;
 
 	private void Awake()
     {
+		GetComponent<SpriteRenderer>().enabled = false;
+		GetComponent<Collider2D>().enabled = false;
+
 		if (useRandomColor)
 		{
 			ShipColorizer colorizer = GetComponentInChildren<ShipColorizer>();
@@ -51,7 +55,7 @@ public class BaseShip : MonoBehaviour
 
 	private void ModifiyParamsFromDifficulty()
 	{
-		float difficulty = Level.newWorld.Difficulty;
+		float difficulty = Level.currentLevelData.Difficulty;
 
 		rotateSpeed = BASE_SHIP_ROTATE_SPEED * difficulty;
 		shootForce = BASE_SHIP_SHOOT_FORCE * difficulty;
@@ -62,18 +66,23 @@ public class BaseShip : MonoBehaviour
 
 	public virtual void Start()
 	{
-		StartCoroutine(Shooting());
-
 		if (respawnEvent == null)
 		{
 			respawnEvent = new UnityEvent();
 		}
+	}
 
+	public virtual void Activate()
+	{
+		isActivated = true;
+		GetComponent<SpriteRenderer>().enabled = isActivated;
+		GetComponent<Collider2D>().enabled = isActivated;
+		StartCoroutine(Shooting());
 	}
 
 	private IEnumerator Shooting()
 	{
-		while (true)
+		while (true && isActivated)
 		{
 			var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
 			yield return new WaitForSeconds(waitTime);
@@ -83,7 +92,7 @@ public class BaseShip : MonoBehaviour
 
 	private void Update()
 	{
-		if (attackState)
+		if (attackState && isActivated)
 		{
 			Move();
 			Rotate();

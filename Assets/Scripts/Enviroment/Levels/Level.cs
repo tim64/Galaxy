@@ -9,13 +9,13 @@ using static Constants;
 /// </summary>
 public class Level
 {
-	public static Level newWorld;
+	public static Level currentLevelData;
 
 	[SerializeField]
-	private string _worldId;
+	private string _levelId;
 
 	[SerializeField] 
-    private string _worldName;
+    private string _levelName;
 
     [SerializeField] 
     private int _shipCount;
@@ -29,12 +29,12 @@ public class Level
 	/// <summary>
 	/// ID текущего уровня
 	/// </summary>
-	public string WorldId => _worldId;
+	public string LevelId => _levelId;
 
 	/// <summary>
 	/// Название уровня
 	/// </summary>
-	public string WorldName { get => _worldName; set => _worldName = value; }
+	public string LevelName { get => _levelName; set => _levelName = value; }
 
 	/// <summary>
 	/// Максимальное кол-во кораблей, которые будут на уровне
@@ -77,15 +77,15 @@ public class Level
 
 		var filePath = JSON_PATH_LEVEL + levelIndex;
 
-		if (newWorld != null)
+		if (currentLevelData != null)
 		{
-			return newWorld;
+			return currentLevelData;
 		}
 		else
 		{
 			var jsonTextFile = Resources.Load<TextAsset>(filePath);
-			newWorld = JsonUtility.FromJson<Level>(jsonTextFile.text);
-			return newWorld;
+			currentLevelData = JsonUtility.FromJson<Level>(jsonTextFile.text);
+			return currentLevelData;
 		}
     }
 }

@@ -1,6 +1,6 @@
 {
-    "_worldId" : "2",
-    "_worldName": "Hyperspace",
+    "_levelId" : "2",
+    "_levelName": "Hyperspace",
     "_shipCount": "32",
     "_difficulty": "2",
     "_bossType": "2"

@@ -82,10 +82,10 @@
 	#region Base Ship Params
 	public static float BASE_SHIP_SHOOT_RATE = 0.1f;
 	public static float BASE_SHIP_ROTATE_SPEED = 5;
-	public static float BASE_SHIP_SHOOT_FORCE = 2;
-	public static float BASE_SHIP_FLY_SPEED = 3;
-	public static float BASE_SHIP_DAMAGE = 1;
-	public static float SHOOT_RATE_MAX = 5;
+	public static float BASE_SHIP_SHOOT_FORCE = 1;
+	public static float BASE_SHIP_FLY_SPEED = 2;
+	public static float BASE_SHIP_DAMAGE = 2;
+	public static float SHOOT_RATE_MAX = 4;
 	public static float BASE_SHIP_CRUSH_DAMAGE = 10;
 	public static float BASE_SHIP_HP = 20;
 	#endregion
@@ -93,8 +93,8 @@
 	#region Angry Ship Params
 	//Параметры злого корабля
 
-	public static float ANGRY_SHIP_DAMAGE = 3;
-	public static float ANGRY_SHIP_SHOOT_FORCE = 4;
+	public static float ANGRY_SHIP_DAMAGE = 2;
+	public static float ANGRY_SHIP_SHOOT_FORCE = 3;
 
 	//Период яростной атаки
 	public static float ANGRY_SHIP_RAGE_PERIOD = 3;
@@ -106,11 +106,11 @@
 	public static float ANGRY_SHIP_RAGE_SHOOT_RATE = 3;
 
 	//Обычная скорость атаки
-	public static float ANGRY_SHIP_SHOOT_RAGE = 0.5f;
+	public static float ANGRY_SHIP_SHOOT_RAGE = 0.2f;
 	#endregion
 
 	#region Teleport ship
-	public static float TELEPORT_SHIP_RADIUS = 3;
+	public static float TELEPORT_SHIP_RADIUS = 10;
 
 	public static float TELEPORT_SHIP_JUMP_PERIOD = 10;
 
@@ -151,6 +151,12 @@
 
 	#region Timing
 	public static float END_GAME_PAUSE_TIME = 2f;
+	#endregion
+
+	#region UI
+	public static float CROSS_FADE_TIME = 2f;
+	public static float CROSS_FADE_DALAY_TIME = 2f;
+
 	#endregion
 
 }

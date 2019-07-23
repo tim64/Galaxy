@@ -14,7 +14,6 @@ public class ProtectedShip : BaseShip
 	{
 		armorHP = hp;
 		base.Start();
-		CreateProtected();
 	}
 
 	private void CreateProtected()
@@ -23,6 +22,12 @@ public class ProtectedShip : BaseShip
         armor.transform.parent = transform;
         armor.transform.localPosition = Vector3.zero;
     }
+
+	public override void Activate()
+	{
+		base.Activate();
+		CreateProtected();
+	}
 
 	/// <summary>
 	/// Данный вид корабля сначала унечтожает силовое поле

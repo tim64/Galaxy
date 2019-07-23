@@ -41,12 +41,17 @@ public class ShipGridControl : MonoBehaviour
 
 	private IEnumerator ShipMover(int maxSideSize, GameObject shipContainer)
 	{
+		//Выравниваем флот по оси Х
+		float offsetX = (maxSideSize * GRID_SIZE)/2;
+
+		//Делаем задержку для эффекта спавна корабля	
 		WaitForSeconds wait = new WaitForSeconds(FLEET_SPAWN_ANIMATION_DELAY);
 		BaseShip[] ships = shipContainer.GetComponentsInChildren<BaseShip>();
 
 		foreach (var ship in ships)
 		{
-			ship.transform.position = new Vector2(hPos % maxSideSize * GRID_SIZE, vPos % maxSideSize * GRID_SIZE);
+			ship.transform.position = new Vector2((hPos % maxSideSize * GRID_SIZE) - offsetX, vPos % maxSideSize * GRID_SIZE);
+
 			hPos++;
 
 			if (hPos >= maxSideSize)
@@ -55,16 +60,16 @@ public class ShipGridControl : MonoBehaviour
 				hPos = 0;
 			}
 
-			CreateSpawnFX(ship.transform);
+			CreateSpawnFX(ship);
 			yield return wait;
 		}
 		gridIsDone.Invoke();
 	}
 
-	private void CreateSpawnFX(Transform shipTransform)
+	private void CreateSpawnFX(BaseShip ship)
 	{
 		PoolObject fx = PoolManager.Get(POOL_TELEPORT_FX_ID);
-		fx.transform.position = shipTransform.position;
-		LeanTween.delayedCall(FLEET_SPAWN_ANIMATION_DELAY, () => shipTransform.GetComponent<SpriteRenderer>().enabled = true);
+		fx.transform.position = ship.transform.position;
+		LeanTween.delayedCall(FLEET_SPAWN_ANIMATION_DELAY, ship.Activate);
 	}
 }

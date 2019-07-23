@@ -45,16 +45,19 @@ public class Popup : MonoBehaviour
 
 	public void RestartGame()
 	{
+		LeanTween.reset();
 		SceneManager.LoadScene(SCENE_GAME, LoadSceneMode.Single);
 	}
 
 	public void GoToMenu()
 	{
+		LeanTween.reset();
 		SceneManager.LoadScene(SCENE_MENU, LoadSceneMode.Single);
 	}
 
 	public void GoToNextLevel()
 	{
+		LeanTween.reset();
 		SceneManager.LoadScene(SCENE_GAME, LoadSceneMode.Single);
 		LevelController.GoToNextLevel();
 	}

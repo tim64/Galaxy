@@ -22,10 +22,12 @@ public class ShipGenerator : MonoBehaviour
 	{
 		//Получаем параметры уровня из JSON
 		currentLevelData = Level.CreateFromJSON(LevelController.currentLevelIndex);
+		//Показываем название уровня
+		UIController.instance.ShowIntroText();
 
 		shipContainer = CreateShipContainer();
 
-		shipContainer.transform.localPosition = WaypointController.instance.gameCenter.position;
+		//shipContainer.transform.localPosition = WaypointController.instance.gameCenter.position;
 
 		//Генерация кораблей
 		GenerateShips();

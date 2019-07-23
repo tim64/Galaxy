@@ -1,6 +1,6 @@
 {
-    "_worldId" : "3",
-    "_worldName": "Dark Matter",
+    "_levelId" : "3",
+    "_levelName": "Dark Matter",
     "_shipCount": "32",
     "_difficulty": "3",
     "_bossType": "2"

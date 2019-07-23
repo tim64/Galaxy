@@ -1,6 +1,6 @@
 {
-    "_worldId" : "4",
-    "_worldName": "Secret universe",
+    "_levelId" : "4",
+    "_levelName": "Secret universe",
     "_shipCount": "64",
     "_difficulty": "3",
     "_bossType": "3"
