@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityNightPool;
+using static Constants;
 
 /// <summary>
 /// Класс который инстантиирует объекты-корабли по заданным условиям.
@@ -6,9 +8,12 @@
 /// </summary>
 public class ShipBuilder : MonoBehaviour
 {
-	//FIXME: Добавить работу с пулом объектов
+	[Space]
+
 	[Header("Префабы кораблей")]
 	public GameObject[] shipPrefabs;
+
+	[Space]
 
 	[Header("Префабы боссов")]
 	public GameObject[] bossShipPrefabs;
@@ -20,7 +25,6 @@ public class ShipBuilder : MonoBehaviour
 	public GameObject BuildRandomShip()
 	{
 		GameObject newShip = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)]);
-
 		newShip.GetComponent<BaseShip>().useRandomColor = true;
 		return newShip;
 	}

@@ -20,11 +20,11 @@ public class TeleportShip : BaseShip
 		while (true && !attackState)
 		{
 			//Добавляем случайное значение, чтобы было разнообразие в поведении кораблей
-			yield return new WaitForSeconds(TELEPORT_SHIP_JUMP_PERIOD + Random.Range(-1, 2));
+			yield return new WaitForSeconds(TELEPORT_SHIP_JUMP_PERIOD + Random.Range(0, TELEPORT_RANDOM_MAX));
 			PoolObject fx = PoolManager.Get(POOL_TELEPORT_FX_ID);
 			fx.transform.position = transform.position;
 
-			LeanTween.delayedCall(0.5f, TeleportShipAction);
+			LeanTween.delayedCall(TELEPORT_FX_DELAY, TeleportShipAction);
 			
 		}
 	}

@@ -1,14 +1,29 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityNightPool;
 using static Constants;
 
 /// <summary>
 /// Класс, который расставляет корабли по сетке
 /// </summary>
 /// <param name="ShipContainer"></param>
-public class ShipGridMover : MonoBehaviour
+public class ShipGridControl : MonoBehaviour
 {
 	private int hPos;
 	private int vPos;
+
+	public UnityEvent gridIsDone;
+
+	private void Awake()
+	{
+		if (gridIsDone == null)
+		{
+			gridIsDone = new UnityEvent();
+		}
+	}
 
 
 	/// <summary>
@@ -21,12 +36,12 @@ public class ShipGridMover : MonoBehaviour
 		int shipCount = shipContainer.transform.childCount;
 		int maxSideSize = Mathf.FloorToInt(Mathf.Sqrt(shipCount)) + FLEET_HORIZONTAL_INDEX;
 
-		ShipMover(maxSideSize, shipContainer);
-
+		StartCoroutine(ShipMover(maxSideSize, shipContainer));
 	}
 
-	private void ShipMover(int maxSideSize, GameObject shipContainer)
+	private IEnumerator ShipMover(int maxSideSize, GameObject shipContainer)
 	{
+		WaitForSeconds wait = new WaitForSeconds(FLEET_SPAWN_ANIMATION_DELAY);
 		BaseShip[] ships = shipContainer.GetComponentsInChildren<BaseShip>();
 
 		foreach (var ship in ships)
@@ -39,6 +54,17 @@ public class ShipGridMover : MonoBehaviour
 				vPos++;
 				hPos = 0;
 			}
+
+			CreateSpawnFX(ship.transform);
+			yield return wait;
 		}
+		gridIsDone.Invoke();
+	}
+
+	private void CreateSpawnFX(Transform shipTransform)
+	{
+		PoolObject fx = PoolManager.Get(POOL_TELEPORT_FX_ID);
+		fx.transform.position = shipTransform.position;
+		LeanTween.delayedCall(FLEET_SPAWN_ANIMATION_DELAY, () => shipTransform.GetComponent<SpriteRenderer>().enabled = true);
 	}
 }

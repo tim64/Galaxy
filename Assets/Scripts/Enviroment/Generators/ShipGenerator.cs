@@ -25,15 +25,21 @@ public class ShipGenerator : MonoBehaviour
 
 		shipContainer = CreateShipContainer();
 
+		shipContainer.transform.localPosition = WaypointController.instance.gameCenter.position;
+
+		//Генерация кораблей
 		GenerateShips();
 
 		//Размещение кораблей по сетке
-		//ShipGridMover ShipMover = new ShipGridMover();
-		ShipGridMover ShipMover = gameObject.AddComponent<ShipGridMover>();
-		ShipMover.MoveShipsOnGrid(shipContainer);
+		ShipGridControl shipGrid = gameObject.AddComponent<ShipGridControl>();
+		shipGrid.MoveShipsOnGrid(shipContainer);
+		
 
-		shipContainer.transform.localPosition = WaypointController.instance.gameCenter.position;
+		shipGrid.gridIsDone.AddListener(EndFleetGeneration);
+	}
 
+	private void EndFleetGeneration()
+	{
 		//Добавление перемещения кораблей
 		shipContainer.AddComponent<ShipMovement>();
 

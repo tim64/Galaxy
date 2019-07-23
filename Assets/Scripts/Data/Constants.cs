@@ -19,6 +19,7 @@
 	public static int FLEET_MOVE_TIME_X = 2;
 	public static int FLEET_MAX_POS_X = 10;
 	public static int FLEET_CURRENT_POS_X = 5;
+	public static float FLEET_SPAWN_ANIMATION_DELAY = 0.25f;
 	#endregion
 
 	#region Path and Prefix
@@ -83,16 +84,16 @@
 	public static float BASE_SHIP_ROTATE_SPEED = 5;
 	public static float BASE_SHIP_SHOOT_FORCE = 2;
 	public static float BASE_SHIP_FLY_SPEED = 3;
-	public static float BASE_SHIP_DAMAGE = 3;
+	public static float BASE_SHIP_DAMAGE = 1;
 	public static float SHOOT_RATE_MAX = 5;
-	public static float BASE_SHIP_CRUSH_DAMAGE = 20;
+	public static float BASE_SHIP_CRUSH_DAMAGE = 10;
 	public static float BASE_SHIP_HP = 20;
 	#endregion
 
 	#region Angry Ship Params
 	//Параметры злого корабля
 
-	public static float ANGRY_SHIP_DAMAGE = 6;
+	public static float ANGRY_SHIP_DAMAGE = 3;
 	public static float ANGRY_SHIP_SHOOT_FORCE = 4;
 
 	//Период яростной атаки
@@ -109,9 +110,13 @@
 	#endregion
 
 	#region Teleport ship
-	public static float TELEPORT_SHIP_RADIUS = 5;
+	public static float TELEPORT_SHIP_RADIUS = 3;
 
 	public static float TELEPORT_SHIP_JUMP_PERIOD = 10;
+
+	public static float TELEPORT_RANDOM_MAX = 10;
+
+	public static float TELEPORT_FX_DELAY = 0.5f;
 	#endregion
 
 	#region Boss Params

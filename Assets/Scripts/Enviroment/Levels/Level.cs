@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 using static Constants;
 
@@ -53,12 +52,13 @@ public class Level
 	public int BossType { get => _bossType; set => _bossType = value; }
 
 	/// <summary>
-	/// Метод создает экземпляр класса World из JSON, по указанному индексу уровня
+	/// Метод создает экземпляр класса Level из JSON, по указанному индексу уровня
 	/// </summary>
 	/// <param name="currentlevelIndex"></param>
 	/// <returns></returns>
 	public static Level CreateFromJSON(int currentlevelIndex)
     {
+		
 		//Исключение отрицательных значений
 		int levelIndex = Mathf.Abs(currentlevelIndex);
 
@@ -66,16 +66,17 @@ public class Level
 		DirectoryInfo d = new DirectoryInfo(levelsPath);
 		int levelCount = FileHelper.JSONFileCount(d);
 
+
 		//Проверка на невозможный номер уровня
 		//Если индекс больше максимального, то загружаем последний уровень
 		if (levelIndex > levelCount)
 		{
 			levelIndex = levelCount;
+			CDebug.LogWarning("Invalid level index. Load Last level!");
 		}
 
-
 		var filePath = JSON_PATH_LEVEL + levelIndex;
-		Debug.Log(filePath);
+
 		if (newWorld != null)
 		{
 			return newWorld;
