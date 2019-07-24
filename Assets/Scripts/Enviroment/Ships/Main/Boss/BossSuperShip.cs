@@ -15,16 +15,6 @@ public class BossSuperShip : BaseShip
 	private Vector3 upVector;
 	private Vector3 rightVector;
 
-	private void Awake()
-	{
-		hp = BOSS_HP;
-		shootRate = BOSS_SHOOT_RATE;
-		damage = BOSS_DAMAGE;
-		shootForce = BOSS_SHOOT_FORCE;
-
-		useRandomShootRange = false;
-	}
-
 	/// <summary>
 	/// Переопределенный метод старта
 	/// </summary>
@@ -32,6 +22,11 @@ public class BossSuperShip : BaseShip
 	{
 		startPos = transform.position;
 		base.Start();
+	}
+
+	public override void Activate()
+	{
+		base.Activate();
 	}
 
 	/// <summary>

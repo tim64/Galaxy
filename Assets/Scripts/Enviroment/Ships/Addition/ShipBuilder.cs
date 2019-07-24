@@ -34,6 +34,7 @@ public class ShipBuilder : MonoBehaviour
 		//FIXME: Индекс из массива боссов
 		GameObject newShip = Instantiate(bossShipPrefabs[Level.currentLevelData.BossType]);
 		newShip.GetComponent<BaseShip>().useRandomColor = true;
+		newShip.GetComponent<BaseShip>().Activate();
 		return newShip;
 	}
 
