@@ -4,8 +4,10 @@ using static Constants;
 
 public class MusicController : MonoBehaviour
 {
-	public static void LoadMusic(string musicName)
+	private void Start()
 	{
-		AudioManager.PlayMusic("Music/" + musicName);
+		
 	}
+
+	public static void LoadMusic(string musicName) => AudioManager.PlayMusic("Music/" + musicName);
 }

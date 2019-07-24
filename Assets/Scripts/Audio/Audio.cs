@@ -8,6 +8,11 @@ public class Audio : MonoBehaviour
 		StartCoroutine(PlaySoundCoroutine(audioClip));
 	}
 
+	public void ChangeVolume(float volume)
+	{
+		GetComponent<AudioSource>().volume = volume;
+	}
+
 	IEnumerator PlaySoundCoroutine(AudioClip audioClip)
 	{
 		GetComponent<AudioSource>().PlayOneShot(audioClip);

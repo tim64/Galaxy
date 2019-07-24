@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class AudioManager : MonoBehaviour
 	static GameObject audioPrefab;
 	static GameObject instance;
 	static AudioSource musicPlayer;
-	public static AudioManager audioManager;
+	public static AudioManager manager;
 	Dictionary<string, Audio> aliveSounds;
 	AudioListener al;
 
@@ -19,7 +20,7 @@ public class AudioManager : MonoBehaviour
 
 	void Awake()
 	{
-		audioManager = this;
+		manager = this;
 		al = GetComponent<AudioListener>();
 		audioClips = new Dictionary<string, AudioClip>();
 
@@ -62,16 +63,28 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
+	public void ChangeMusicVolume(float volume)
+	{
+		musicPlayer.volume = volume;
+	}
+
+	public void ChangeSoundsVolume(float volume)
+	{
+		PlayerPrefs.SetFloat("volume", volume);
+	}
+
 	public static void PlaySoundOnce(string name)
 	{
-		if (!audioManager.audioClips.ContainsKey(name))
+		if (!manager.audioClips.ContainsKey(name))
 		{
 			return;
 		}
 		GameObject go = Instantiate(audioPrefab);
 		go.transform.parent = instance.transform;
 		Audio a = go.GetComponent<Audio>();
-		a.PlaySoundOnce(audioManager.audioClips[name]);
+		Debug.Log(manager.audioClips[name]);
+		a.PlaySoundOnce(manager.audioClips[name]);
+		a.ChangeVolume(PlayerPrefs.GetFloat("volume"));
 	}
 
 
