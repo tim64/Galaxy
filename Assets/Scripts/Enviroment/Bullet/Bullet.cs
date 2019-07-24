@@ -40,6 +40,12 @@ public class Bullet : MonoBehaviour
 				GetComponent<PoolObject>().Return();
 			}
 		}
+
+		if (collision.gameObject.tag == "Bullet")
+		{
+			collision.GetComponent<PoolObject>().Return();
+			GetComponent<PoolObject>().Return();
+		}
 	}
 
 	void Update()
