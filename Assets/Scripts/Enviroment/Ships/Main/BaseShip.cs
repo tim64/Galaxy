@@ -85,18 +85,10 @@ public class BaseShip : MonoBehaviour
 	{
 		while (true && isActivated)
 		{
-			if (shootImmediately)
-			{
-				Shoot();
-				var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
-				yield return new WaitForSeconds(waitTime);
-			}
-			else
-			{
-				var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
-				yield return new WaitForSeconds(waitTime);
-				Shoot();
-			}
+			if (shootImmediately)  Shoot();
+			var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
+			yield return new WaitForSeconds(waitTime);
+			if (!shootImmediately) Shoot();
 		}
 	}
 

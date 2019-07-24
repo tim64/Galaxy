@@ -159,4 +159,12 @@
 
 	#endregion
 
+	#region Tags
+	public static string PLAYER_TAG = "Player";
+	public static string ENEMY_TAG = "Enemy";
+	public static string BULLET_ENEMY_TAG = "Bullet";
+	public static string BULLET_PLAYER_TAG = "PlayerBullet";
+
+	#endregion
+
 }
