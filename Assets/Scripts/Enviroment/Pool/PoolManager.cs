@@ -35,8 +35,7 @@ namespace UnityNightPool
 		{
 			if (!init)
 			{
-				parent = (new GameObject("Pools")).transform;
-				Object.DontDestroyOnLoad(parent.gameObject);
+				parent = (GameObject.Find("Pools")).transform;
 				for (int i = 0; i < PoolConfig.pools.Count; i++)
 				{
 					if (PoolConfig.pools[i].prefab != null)
