@@ -51,17 +51,17 @@ public class BossShip : BaseShip
 		StartCoroutine(HorizontalFly());
 	}
 
-	private void RemoveInvulnerability()
+	protected void RemoveInvulnerability()
 	{
 		GetComponent<Collider2D>().enabled = true;
 	}
 
-	private void ActivateGuns()
+	protected void ActivateGuns()
 	{
 		foreach (var item in GetComponentsInChildren<BossGun>())
 		{
-			item.GetComponent<BossGun>().enabled = true;
-			item.GetComponent<Collider2D>().enabled = true;
+			item.enabled = true;
+			item.Activate();
 		}
 	}
 
@@ -82,7 +82,6 @@ public class BossShip : BaseShip
 	{
 		base.DestroyShip();
 
-		//Конец игры
 		//Конец игры
 		LeanTween.delayedCall(END_GAME_PAUSE_TIME, () => UIController.instance.EndGame(true));
 	}

@@ -15,18 +15,18 @@ using static Constants;
 [RequireComponent(typeof(SpriteRenderer))]
 public class BaseShip : MonoBehaviour
 {
-	public bool useRandomColor;
+	[HideInInspector]
 	public UnityEvent respawnEvent;
 
 	[Header("FX")]
 	public GameObject explosionFX;
-
 
 	//Полет корабля и атака игрока
 	[HideInInspector]
 	public bool attackState;
 	[HideInInspector]
 	public Transform target;
+	public bool useRandomColor;
 
 	//Параметры корабля
 	protected float hp = BASE_SHIP_HP;
@@ -38,6 +38,7 @@ public class BaseShip : MonoBehaviour
 
 	protected bool useRandomShootRange = true;
 	protected bool isActivated = false;
+	protected bool shootImmediately = false;
 
 	protected virtual void Awake()
     {
@@ -84,9 +85,18 @@ public class BaseShip : MonoBehaviour
 	{
 		while (true && isActivated)
 		{
-			var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
-			yield return new WaitForSeconds(waitTime);
-			Shoot();
+			if (shootImmediately)
+			{
+				Shoot();
+				var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
+				yield return new WaitForSeconds(waitTime);
+			}
+			else
+			{
+				var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
+				yield return new WaitForSeconds(waitTime);
+				Shoot();
+			}
 		}
 	}
 

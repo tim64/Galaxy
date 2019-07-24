@@ -10,6 +10,7 @@ TagManager:
   - MainCanvas
   - MainBackground
   - UI
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

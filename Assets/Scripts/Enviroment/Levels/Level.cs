@@ -58,11 +58,11 @@ public class Level
 	/// <returns></returns>
 	public static Level CreateFromJSON(int currentlevelIndex)
     {
-		
+		Debug.Log(currentlevelIndex);
 		//Исключение отрицательных значений
 		int levelIndex = Mathf.Abs(currentlevelIndex);
 
-		var levelsPath =Application.dataPath + RESOURCES_PATH + JSON_PATH_LEVEL_FOLDER;
+		var levelsPath = Application.dataPath + RESOURCES_PATH + JSON_PATH_LEVEL_FOLDER;
 		DirectoryInfo d = new DirectoryInfo(levelsPath);
 		int levelCount = FileHelper.JSONFileCount(d);
 
@@ -77,15 +77,10 @@ public class Level
 
 		var filePath = JSON_PATH_LEVEL + levelIndex;
 
-		if (currentLevelData != null)
-		{
-			return currentLevelData;
-		}
-		else
-		{
-			var jsonTextFile = Resources.Load<TextAsset>(filePath);
-			currentLevelData = JsonUtility.FromJson<Level>(jsonTextFile.text);
-			return currentLevelData;
-		}
+		Debug.Log(filePath);
+
+		var jsonTextFile = Resources.Load<TextAsset>(filePath);
+		currentLevelData = JsonUtility.FromJson<Level>(jsonTextFile.text);
+		return currentLevelData;
     }
 }
