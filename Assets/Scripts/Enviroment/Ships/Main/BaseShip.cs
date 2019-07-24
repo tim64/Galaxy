@@ -39,7 +39,7 @@ public class BaseShip : MonoBehaviour
 	protected bool useRandomShootRange = true;
 	protected bool isActivated = false;
 
-	private void Awake()
+	protected virtual void Awake()
     {
 		GetComponent<SpriteRenderer>().enabled = false;
 		GetComponent<Collider2D>().enabled = false;
@@ -80,7 +80,7 @@ public class BaseShip : MonoBehaviour
 		StartCoroutine(Shooting());
 	}
 
-	private IEnumerator Shooting()
+	protected IEnumerator Shooting()
 	{
 		while (true && isActivated)
 		{

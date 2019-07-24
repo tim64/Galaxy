@@ -153,9 +153,9 @@ GameObject:
   - component: {fileID: 1139246442966365835}
   - component: {fileID: 1139246442966365834}
   - component: {fileID: 1139246442966365833}
-  - component: {fileID: 2131634497123752725}
+  - component: {fileID: 7384636214987901498}
   m_Layer: 0
-  m_Name: BossShip2
+  m_Name: BossShipSuper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HSLShader: {fileID: 4800000, guid: ccddce15ca4a44ff29e4bab139672062, type: 3}
   autoColorize: 0
---- !u!114 &2131634497123752725
+--- !u!114 &7384636214987901498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,10 +274,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1139246442966365839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bee7f2f185a2e4805b7057b23f93f8fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 535f14c0152ce4f1d870bd490d4b84ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useRandomColor: 1
+  useRandomColor: 0
   respawnEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -1,17 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityNightPool;
 using static Constants;
 
-public class BossAlienShip : BossSuperShip
+public class BossShipMega : BossShip
 {
-	private void Awake()
+	protected override void Awake()
 	{
-		hp = BOSS_HP;
-		shootRate = BOSS_SHOOT_RATE;
-		damage = BOSS_DAMAGE;
-		shootForce = BOSS_SHOOT_FORCE;
-
-		useRandomShootRange = false;
+		base.Awake();
 	}
 
 	/// <summary>
@@ -21,20 +17,20 @@ public class BossAlienShip : BossSuperShip
 	public override void StartAttackPhase()
 	{
 		base.StartAttackPhase();
-		StartCoroutine(HorizontalFly());
+		StartCoroutine(SpawnShip());
 
 	}
 
-	private IEnumerator HorizontalFly()
+	private IEnumerator SpawnShip()
 	{
 		while (true)
 		{
-			LeanTween.moveLocalX(gameObject, -BOSS_HORIZONTAL_MAX_X, BOSS_HORIZONTAL_FLY_TIME).setOnComplete(() => LeanTween.moveLocalX(
-				gameObject,
-				BOSS_HORIZONTAL_MAX_X,
-				BOSS_HORIZONTAL_FLY_TIME * 2));
-
-			yield return new WaitForSeconds(BOSS_HORIZONTAL_FLY_PERIOD);
+			yield return new WaitForSeconds(BOSS_JET_SPAWN_TIME);
+			PoolObject shipObject = PoolManager.Get(POOL_BOSS_SHIP_ID);
+			shipObject.transform.position = transform.position;
+			BaseShip ship = shipObject.GetComponent<BaseShip>();
+			ship.target = WaypointController.instance.attakPoint;
+			ship.attackState = true;
 		}
 	}
 
@@ -47,10 +43,5 @@ public class BossAlienShip : BossSuperShip
 		{
 			base.Shoot();
 		}
-	}
-
-	void Update()
-	{
-
 	}
 }

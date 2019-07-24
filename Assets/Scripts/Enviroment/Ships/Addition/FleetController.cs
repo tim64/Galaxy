@@ -27,15 +27,14 @@ public class FleetController : MonoBehaviour
 			BaseShip ship = GetRandomShip();
 			if (ship != null)
 			{
-				ship.respawnEvent.AddListener(() => RespawnShip(ship));
+				ship.respawnEvent.AddListener(() => DestroyShip(ship));
 				MoveShip(ship);
 			}	
 		}
 	}
 
-	private void RespawnShip(BaseShip ship)
+	private void DestroyShip(BaseShip ship)
 	{
-		//TODO:Сделать респаун
 		Destroy(ship.gameObject);
 	}
 
@@ -69,7 +68,7 @@ public class FleetController : MonoBehaviour
 		bossShip.transform.position = bossRespPoint;
 
 		//Интро. Босс спускается к игроку
-		LeanTween.moveLocalY(bossShip, bossGamePoint.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossSuperShip>().StartAttackPhase());
+		LeanTween.moveLocalY(bossShip, bossGamePoint.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossShip>().StartAttackPhase());
 	}
 
 	private void StopAttack() => StopCoroutine(attackCoroutine);

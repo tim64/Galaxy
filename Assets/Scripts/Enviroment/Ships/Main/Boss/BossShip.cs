@@ -1,21 +1,13 @@
 ﻿using static Constants;
+using System.Collections;
 using UnityEngine;
 
-public class BossSuperShip : BaseShip
+public class BossShip : BaseShip
 {
-	private Vector3 startPos;
-
-	private readonly float speed = BOSS_SPEED;
-	private readonly float xScale = BOSS_X_PATH_SCALE;
-	private readonly float yScale = BOSS_Y_PATH_SCALE;
-
+	protected Vector3 startPos;
 	public bool attackPhase;
-	private float tweenTime;
 
-	private Vector3 upVector;
-	private Vector3 rightVector;
-
-	private void Awake()
+	protected virtual new void Awake()
 	{
 		hp = BOSS_HP;
 		shootRate = BOSS_SHOOT_RATE;
@@ -25,18 +17,18 @@ public class BossSuperShip : BaseShip
 		useRandomShootRange = false;
 	}
 
-	/// <summary>
-	/// Переопределенный метод старта
-	/// </summary>
+
 	public override void Start()
 	{
 		startPos = transform.position;
 		base.Start();
 	}
 
-	/// <summary>
-	/// Переопределенный метод BaseShip для стрельбы
-	/// </summary>
+	public override void Activate()
+	{
+		base.Activate();
+	}
+
 	public override void Shoot()
 	{
 		if (attackPhase)
@@ -55,6 +47,8 @@ public class BossSuperShip : BaseShip
 		attackPhase = true;
 		RemoveInvulnerability();
 		ActivateGuns();	
+
+		StartCoroutine(HorizontalFly());
 	}
 
 	private void RemoveInvulnerability()
@@ -71,14 +65,16 @@ public class BossSuperShip : BaseShip
 		}
 	}
 
-	void Update()
+	private IEnumerator HorizontalFly()
 	{
-		if (attackPhase)
+		while (true)
 		{
-			tweenTime += Time.deltaTime;
-			Vector3 upVector = Vector3.up * Mathf.Sin(tweenTime * speed);
-			Vector3 rightVector = Vector3.right * Mathf.Sin(tweenTime / 2 * speed);
-			transform.position = startPos + (rightVector * xScale) - (upVector * yScale);
+			LeanTween.moveLocalX(gameObject, -BOSS_HORIZONTAL_MAX_X, BOSS_HORIZONTAL_FLY_TIME).setOnComplete(() => LeanTween.moveLocalX(
+				gameObject,
+				BOSS_HORIZONTAL_MAX_X,
+				BOSS_HORIZONTAL_FLY_TIME * 2));
+
+			yield return new WaitForSeconds(BOSS_HORIZONTAL_FLY_PERIOD);
 		}
 	}
 
