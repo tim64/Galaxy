@@ -32,7 +32,6 @@ public class AudioManager : MonoBehaviour
 		audioPrefab = audioPrefabSource;
 		musicPlayer = GetComponent<AudioSource>();
 		aliveSounds = new Dictionary<string, Audio>();
-		DontDestroyOnLoad(gameObject);
 	}
 
 	void Update()

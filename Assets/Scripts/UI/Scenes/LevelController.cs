@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Constants;
 
@@ -12,6 +11,11 @@ public class LevelController : MonoBehaviour
 	/// Текущий уровень
 	/// </summary>
 	public static int currentLevelIndex = 1;
+
+	private void Start()
+	{
+		MusicController.LoadMusic("Boss");
+	}
 
 	/// <summary>
 	/// Данный метод вызывается через UI event на кнопках
