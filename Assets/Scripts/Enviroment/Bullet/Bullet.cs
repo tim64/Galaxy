@@ -26,6 +26,7 @@ public class Bullet : MonoBehaviour
 		{
 			if (isPlayerBullet)
 			{
+				AudioManager.PlaySoundOnce("BulletCollision");
 				collision.GetComponent<BaseShip>().DamageShip(damage);
 				GetComponent<PoolObject>().Return();
 				
@@ -36,6 +37,7 @@ public class Bullet : MonoBehaviour
 		{
 			if (!isPlayerBullet)
 			{
+				AudioManager.PlaySoundOnce("BulletCollision");
 				collision.GetComponent<Player>().Damage(damage);
 				GetComponent<PoolObject>().Return();
 			}
@@ -43,6 +45,7 @@ public class Bullet : MonoBehaviour
 
 		if (collision.gameObject.tag == BULLET_PLAYER_TAG)
 		{
+			AudioManager.PlaySoundOnce("BulletCollision");
 			collision.GetComponent<PoolObject>().Return();
 			GetComponent<PoolObject>().Return();
 		}

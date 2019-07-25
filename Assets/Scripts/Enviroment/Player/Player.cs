@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
 			bullet.transform.position = transform.position;
 			bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * shootForce);
 
+			AudioManager.PlaySoundOnce("PlayerBullet");
+
 			LeanTween.delayedCall(reloadingTime, () => isShooting = false);
         }
 
@@ -58,6 +60,8 @@ public class Player : MonoBehaviour
 		damageEvent.Invoke();
 		Hp -= damage;
 
+		AudioManager.PlaySoundOnce("Damage");
+
 		if (Hp <= 0)
 		{
 			DestroyPlayer();
@@ -70,6 +74,8 @@ public class Player : MonoBehaviour
 		fx.GetComponent<SpriteRenderer>().color = Color.yellow;
 		fx.transform.position = transform.position;
 		gameObject.SetActive(false);
+
+		AudioManager.PlaySoundOnce("BossBoom");
 
 		//Конец игры
 		LeanTween.delayedCall(END_GAME_PAUSE_TIME, () => UIController.instance.EndGame(false));

@@ -16,7 +16,34 @@ public class AudioManager : MonoBehaviour
 	AudioListener al;
 
 	public static bool muteSound;
+
+	public static bool MuteSound
+	{
+		get
+		{
+			return muteSound;
+		}
+		set
+		{
+			var volume = value ? 0 : 1;
+			muteSound = value;
+		}
+	}
+
 	public static bool muteMusic;
+
+	public static bool MuteMusic
+	{
+		get
+		{
+			return muteMusic;
+		}
+		set
+		{
+			var volume = value ? 0 : 1;
+			muteSound = value;
+		}
+	}
 
 	void Awake()
 	{
@@ -63,16 +90,6 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	public void ChangeMusicVolume(float volume)
-	{
-		musicPlayer.volume = volume;
-	}
-
-	public void ChangeSoundsVolume(float volume)
-	{
-		PlayerPrefs.SetFloat("volume", volume);
-	}
-
 	public static void PlaySoundOnce(string name)
 	{
 		if (!manager.audioClips.ContainsKey(name))
@@ -82,9 +99,7 @@ public class AudioManager : MonoBehaviour
 		GameObject go = Instantiate(audioPrefab);
 		go.transform.parent = instance.transform;
 		Audio a = go.GetComponent<Audio>();
-		Debug.Log(manager.audioClips[name]);
 		a.PlaySoundOnce(manager.audioClips[name]);
-		a.ChangeVolume(PlayerPrefs.GetFloat("volume"));
 	}
 
 
@@ -101,7 +116,9 @@ public class AudioManager : MonoBehaviour
 		{
 			musicPlayer.loop = true;
 			musicPlayer.Play();
+			
 		}
+		musicPlayer.volume = 0.5f;
 
 	}
 }
