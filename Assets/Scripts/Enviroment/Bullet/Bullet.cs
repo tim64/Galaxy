@@ -22,27 +22,30 @@ public class Bullet : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Enemy")
+		if (collision.gameObject.tag == ENEMY_TAG)
 		{
 			if (isPlayerBullet)
 			{
+				AudioManager.PlaySoundOnce("BulletCollision");
 				collision.GetComponent<BaseShip>().DamageShip(damage);
 				GetComponent<PoolObject>().Return();
 				
 			}
 		}
 
-		if (collision.gameObject.tag == "Player")
+		if (collision.gameObject.tag == PLAYER_TAG)
 		{
 			if (!isPlayerBullet)
 			{
+				AudioManager.PlaySoundOnce("BulletCollision");
 				collision.GetComponent<Player>().Damage(damage);
 				GetComponent<PoolObject>().Return();
 			}
 		}
 
-		if (collision.gameObject.tag == "PlayerBullet")
+		if (collision.gameObject.tag == BULLET_PLAYER_TAG)
 		{
+			AudioManager.PlaySoundOnce("BulletCollision");
 			collision.GetComponent<PoolObject>().Return();
 			GetComponent<PoolObject>().Return();
 		}

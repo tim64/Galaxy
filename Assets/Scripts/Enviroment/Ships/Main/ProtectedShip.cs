@@ -38,6 +38,7 @@ public class ProtectedShip : BaseShip
 		{
 			if ((armorHP -= damage) <= 0)
 			{
+				AudioManager.PlaySoundOnce("Protect");
 				attackState = true;
 				onProtected = false;
 				Destroy(armor);

@@ -75,6 +75,7 @@ public class BaseShip : MonoBehaviour
 
 	public virtual void Activate()
 	{
+		AudioManager.PlaySoundOnce("Teleport");
 		isActivated = true;
 		GetComponent<SpriteRenderer>().enabled = isActivated;
 		GetComponent<Collider2D>().enabled = isActivated;
@@ -85,18 +86,10 @@ public class BaseShip : MonoBehaviour
 	{
 		while (true && isActivated)
 		{
-			if (shootImmediately)
-			{
-				Shoot();
-				var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
-				yield return new WaitForSeconds(waitTime);
-			}
-			else
-			{
-				var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
-				yield return new WaitForSeconds(waitTime);
-				Shoot();
-			}
+			if (shootImmediately)  Shoot();
+			var waitTime = useRandomShootRange ? Random.Range(0, SHOOT_RATE_MAX / shootRate) : SHOOT_RATE_MAX / shootRate;
+			yield return new WaitForSeconds(waitTime);
+			if (!shootImmediately) Shoot();
 		}
 	}
 
@@ -160,7 +153,9 @@ public class BaseShip : MonoBehaviour
 		{
 			transform.parent = null;
 		}
-		
+
+		AudioManager.PlaySoundOnce("Fly");
+
 		target = newTarget;
 		attackState = true;
 	}
@@ -177,6 +172,8 @@ public class BaseShip : MonoBehaviour
 
 		bulletTransform.rotation = transform.rotation;
 		bulletTransform.position = transform.position;
+
+		AudioManager.PlaySoundOnce("EnemyBullet");
 
 
 		if (target != null)
@@ -197,6 +194,7 @@ public class BaseShip : MonoBehaviour
 	{
 		if ((hp -= damage) <= 0)
 		{
+			AudioManager.PlaySoundOnce("Damage");
 			DestroyShip();
 		}
 	}
@@ -206,6 +204,7 @@ public class BaseShip : MonoBehaviour
 	{
 		PoolObject fx = PoolManager.Get(POOL_EXPLOSION_ID);
 		fx.transform.position = transform.position;
+		AudioManager.PlaySoundOnce("BaseShipBoom");
 		Destroy(gameObject);
 	}
 }

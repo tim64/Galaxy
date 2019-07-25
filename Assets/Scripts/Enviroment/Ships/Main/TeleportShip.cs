@@ -33,6 +33,7 @@ public class TeleportShip : BaseShip
 	{
 		if (transform != null)
 		{
+			AudioManager.PlaySoundOnce("Teleport");
 			transform.position = Random.insideUnitCircle * TELEPORT_SHIP_RADIUS;
 			PoolObject fx = PoolManager.Get(POOL_TELEPORT_FX_ID);
 			fx.transform.position = transform.position;

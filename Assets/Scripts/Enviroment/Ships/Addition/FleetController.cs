@@ -67,6 +67,9 @@ public class FleetController : MonoBehaviour
 		GameObject bossShip = builder.CreateBossShip();
 		bossShip.transform.position = bossRespPoint;
 
+		//Музыкальная тема босса
+		MusicController.LoadMusic("Boss");
+
 		//Интро. Босс спускается к игроку
 		LeanTween.moveLocalY(bossShip, bossGamePoint.y, BOSS_INTRO_TIME).setOnComplete(() => bossShip.GetComponent<BossShip>().StartAttackPhase());
 	}

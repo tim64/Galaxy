@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -10,6 +8,11 @@ public class MenuController : MonoBehaviour
 {
 	public GameObject mainContent;
 	public GameObject settingContent;
+
+	private void Start()
+	{
+		MusicController.LoadMusic("Menu");
+	}
 
 	public void SwitchContent()
 	{

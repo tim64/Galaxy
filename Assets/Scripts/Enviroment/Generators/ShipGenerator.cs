@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using static Constants;
-using Random = UnityEngine.Random;
+﻿using UnityEngine;
 
 
 /// <summary>
@@ -24,6 +20,8 @@ public class ShipGenerator : MonoBehaviour
 		currentLevelData = Level.CreateFromJSON(LevelController.currentLevelIndex);
 		//Показываем название уровня
 		UIController.instance.ShowIntroText();
+		//Включаем музыкальную тему
+		MusicController.LoadMusic(currentLevelData.LevelName);
 
 		shipContainer = CreateShipContainer();
 
