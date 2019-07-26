@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PoolConfig
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 8714fb4cfe5dd4192b570fc2429b0d6d,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.size
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[0].prefab
+    value: 
+    objectReference: {fileID: 1780557000622323025, guid: 928513597dc0b4889ae8bb02c5452a52,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[0].id
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[0].switchGameObject
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[1].prefab
+    value: 
+    objectReference: {fileID: -8514367230536097075, guid: 451def971d2c5455887354d5005cecef,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[1].id
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[1].switchGameObject
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[2].prefab
+    value: 
+    objectReference: {fileID: -1031500573735133139, guid: 484ea821b571d46998a50888aa55617c,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[2].id
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[2].switchGameObject
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[3].prefab
+    value: 
+    objectReference: {fileID: 2020453540116299154, guid: 3229006abcf7d48579c4da7dfbdc63da,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[3].id
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[3].switchGameObject
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[4].prefab
+    value: 
+    objectReference: {fileID: 7010086810679892364, guid: 7691c13e6b33a46888cf92f8c34d4c70,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[4].id
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[4].switchGameObject
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[5].prefab
+    value: 
+    objectReference: {fileID: 7010086810679892364, guid: 5946dba93f20a4d41b2723ff056a1693,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[5].id
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[5].switchGameObject
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[6].prefab
+    value: 
+    objectReference: {fileID: -2146905527048645493, guid: 8f1ae262725754a6bbeca502c6adf1ef,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[6].id
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: pools.Array.data[6].switchGameObject
+    value: 0
+    objectReference: {fileID: 0}
