@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static Constants;
 /// <summary>
 /// Класс описывает корабли в силовом поле
 /// </summary>
@@ -38,7 +39,7 @@ public class ProtectedShip : BaseShip
 		{
 			if ((armorHP -= damage) <= 0)
 			{
-				AudioManager.PlaySoundOnce("Protect");
+				AudioManager.PlaySoundOnce(S_PROTECT);
 				attackState = true;
 				onProtected = false;
 				Destroy(armor);

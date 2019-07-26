@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
 		bullet.transform.position = transform.position;
 		bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * shootForce);
 
-		AudioManager.PlaySoundOnce("PlayerBullet");
+		AudioManager.PlaySoundOnce(S_PLAYER_BULLET);
 		LeanTween.delayedCall(reloadingTime, () => isShooting = false);
 	}
 
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
 		damageEvent.Invoke();
 		Hp -= damage;
 
-		AudioManager.PlaySoundOnce("Damage");
+		AudioManager.PlaySoundOnce(S_DAMAGE);
 
 		if (Hp <= 0)
 		{
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
 		fx.transform.position = transform.position;
 		gameObject.SetActive(false);
 
-		AudioManager.PlaySoundOnce("BossBoom");
+		AudioManager.PlaySoundOnce(S_BOSS_BOOM);
 
 		//Конец игры
 		LeanTween.delayedCall(END_GAME_PAUSE_TIME, () => UIController.instance.EndGame(false));

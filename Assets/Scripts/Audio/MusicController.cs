@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using static Constants;
 
+/// <summary>
+/// Класс для загрузки различной музыки
+/// </summary>
 public class MusicController : MonoBehaviour
 {
-	private void Start()
-	{
-		
-	}
-
+	/// <summary>
+	/// Загрузить музыку по имени файла
+	/// </summary>
+	/// <param name="musicName"></param>
 	public static void LoadMusic(string musicName) => AudioManager.PlayMusic("Music/" + musicName);
 }

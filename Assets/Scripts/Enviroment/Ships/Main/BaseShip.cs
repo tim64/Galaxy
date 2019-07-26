@@ -75,7 +75,7 @@ public class BaseShip : MonoBehaviour
 
 	public virtual void Activate()
 	{
-		AudioManager.PlaySoundOnce("Teleport");
+		AudioManager.PlaySoundOnce(S_TELEPORT);
 		isActivated = true;
 		GetComponent<SpriteRenderer>().enabled = isActivated;
 		GetComponent<Collider2D>().enabled = isActivated;
@@ -154,7 +154,7 @@ public class BaseShip : MonoBehaviour
 			transform.parent = null;
 		}
 
-		AudioManager.PlaySoundOnce("Fly");
+		AudioManager.PlaySoundOnce(S_FLY);
 
 		target = newTarget;
 		attackState = true;
@@ -173,7 +173,7 @@ public class BaseShip : MonoBehaviour
 		bulletTransform.rotation = transform.rotation;
 		bulletTransform.position = transform.position;
 
-		AudioManager.PlaySoundOnce("EnemyBullet");
+		AudioManager.PlaySoundOnce(S_ENEMY_BULLET);
 
 
 		if (target != null)
@@ -194,7 +194,7 @@ public class BaseShip : MonoBehaviour
 	{
 		if ((hp -= damage) <= 0)
 		{
-			AudioManager.PlaySoundOnce("Damage");
+			AudioManager.PlaySoundOnce(S_DAMAGE);
 			DestroyShip();
 		}
 	}
@@ -204,7 +204,7 @@ public class BaseShip : MonoBehaviour
 	{
 		PoolObject fx = PoolManager.Get(POOL_EXPLOSION_ID);
 		fx.transform.position = transform.position;
-		AudioManager.PlaySoundOnce("BaseShipBoom");
+		AudioManager.PlaySoundOnce(S_BASE_SHIP_BOOM);
 		Destroy(gameObject);
 	}
 }

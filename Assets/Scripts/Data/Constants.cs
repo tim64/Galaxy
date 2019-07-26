@@ -1,4 +1,7 @@
-﻿public static class Constants
+﻿/// <summary>
+/// Глобальный класс с всеми константами, которые нужны в игре
+/// </summary>
+public static class Constants
 {
 	#region Fleet Params
 	//Урон, который наносится противником если он врезается в игрока
@@ -56,7 +59,6 @@
 	public static float BOSS_JET_SPAWN_TIME = 1;
 	#endregion
 
-
 	#region Boss Alien Ship
 	//Общее время перемещения корабля босса по оси Х
 	public static float BOSS_HORIZONTAL_FLY_PERIOD = 6;
@@ -66,6 +68,7 @@
 	//Крайняя координата перемещения босса по оси Х
 	public static float BOSS_HORIZONTAL_MAX_X = 15;
 	#endregion
+
 	#region Scenes
 	//ID сцены "Меню"
 	public static int SCENE_MENU = 0;
@@ -197,4 +200,26 @@
 
 	#endregion
 
+	#region Sound Names
+	//Звук при телепортации корабля
+	public static string S_TELEPORT = "Teleport";
+	//Звук при атаке-поелете корабля
+	public static string S_FLY= "Fly";
+	//Звук выстрела врага
+	public static string S_ENEMY_BULLET = "EnemyBullet";
+	//Звук получения урона
+	public static string S_DAMAGE = "Damage";
+	//Взрыв корабля
+	public static string S_BASE_SHIP_BOOM = "BaseShipBoom";
+	//Звук полета босса
+	public static string S_BOSS_ENGINE = "BossEngine";
+	//Звук столкновения пуль
+	public static string s_BULLET_COLLISION = "BulletCollision";
+	//Звук выстрела игрока
+	public static string S_PLAYER_BULLET = "PlayerBullet";
+	//Звук взрыва босса
+	public static string S_BOSS_BOOM = "BossBoom";
+	//Звук уничтожения защиты
+	public static string S_PROTECT = "Protect";
+	#endregion
 }

@@ -21,7 +21,7 @@ public class BossShip : BaseShip
 	public override void Start()
 	{
 		startPos = transform.position;
-		AudioManager.PlaySoundOnce("BossEngine");
+		AudioManager.PlaySoundOnce(S_BOSS_ENGINE);
 		base.Start();
 	}
 
@@ -61,7 +61,7 @@ public class BossShip : BaseShip
 	{
 		foreach (var item in GetComponentsInChildren<BossGun>())
 		{
-			AudioManager.PlaySoundOnce("BossEngine");
+			AudioManager.PlaySoundOnce(S_BOSS_ENGINE);
 			item.enabled = true;
 			item.Activate();
 		}
@@ -83,7 +83,7 @@ public class BossShip : BaseShip
 	protected override void DestroyShip()
 	{
 		base.DestroyShip();
-		AudioManager.PlaySoundOnce("Teleport");
+		AudioManager.PlaySoundOnce(S_TELEPORT);
 		//Конец игры
 		LeanTween.delayedCall(END_GAME_PAUSE_TIME, () => UIController.instance.EndGame(true));
 	}
