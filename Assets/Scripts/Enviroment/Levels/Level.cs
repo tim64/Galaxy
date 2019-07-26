@@ -1,5 +1,4 @@
-﻿using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 using static Constants;
 
 [System.Serializable]
@@ -58,13 +57,10 @@ public class Level
 	/// <returns></returns>
 	public static Level CreateFromJSON(int currentlevelIndex)
     {
-		Debug.Log(currentlevelIndex);
 		//Исключение отрицательных значений
 		int levelIndex = Mathf.Abs(currentlevelIndex);
 
-		var levelsPath = Application.dataPath + RESOURCES_PATH + JSON_PATH_LEVEL_FOLDER;
-		DirectoryInfo d = new DirectoryInfo(levelsPath);
-		int levelCount = FileHelper.JSONFileCount(d);
+		int levelCount = MAX_JSON_LEVEL_FILE;
 
 
 		//Проверка на невозможный номер уровня
@@ -72,7 +68,7 @@ public class Level
 		if (levelIndex > levelCount)
 		{
 			levelIndex = levelCount;
-			CDebug.LogWarning("Invalid level index. Load Last level!");
+			CDebug.LogError("Invalid level index. Load Last level!");
 		}
 
 		var filePath = JSON_PATH_LEVEL + levelIndex;

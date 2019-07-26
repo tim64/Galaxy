@@ -32,4 +32,9 @@ public class LevelController : MonoBehaviour
 		currentLevelIndex += 1;
 		SceneManager.LoadScene(SCENE_GAME);
 	}
+
+	public void GoToMenu()
+	{
+		SceneManager.LoadScene(SCENE_MENU);
+	}
 }
