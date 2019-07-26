@@ -29,6 +29,8 @@
 	public static string JSON_PATH_LEVEL_FILENAME = "Level";
 	//Полный путь
 	public static string JSON_PATH_LEVEL = JSON_PATH_LEVEL_FOLDER + JSON_PATH_LEVEL_FILENAME;
+	//Текущее кол-во уровней
+	public static int MAX_JSON_LEVEL_FILE = 4;
 	//Название папки с ресурсами
 	public static string RESOURCES_PATH = "/Resources/";
 	//Путь к папке с спрайтами кораблей
@@ -143,15 +145,15 @@
 
 	#region Player Params
 	//Скорость игрока
-	public static float PLAYER_SPEED = 2;
+	public static float PLAYER_SPEED = 1000;
 	//Перезарядка стрельбы
-	public static float PLAYER_RELOADING_TIME = 0.2f;
+	public static float PLAYER_RELOADING_TIME = 0.1f;
 	//Сила выстрела игрока
 	public static float PLAYER_SHOOT_FORCE = 10;
 	//Максимальное здоровье игрока
 	public static float PLAYER_MAX_HP = 100;
 	//Максимальная позиция по Х
-	public static float PLAYER_MAX_X_POSITION = 20;
+	public static float PLAYER_MAX_X_POSITION = 15;
 	//Урон игрока
 	public static float PLAYER_DAMAGE = 7;
 	#endregion

@@ -10,8 +10,13 @@ public class Player : MonoBehaviour
 	private readonly float reloadingTime = PLAYER_RELOADING_TIME;
 	private readonly float shootForce = PLAYER_SHOOT_FORCE;
 	private bool isShooting;
-	private readonly Rigidbody2D rb;
+	private Rigidbody2D rb;
 	private Vector2 playerPos;
+
+	private int direction;
+
+	public PlayerButton LeftButton; 
+	public PlayerButton RightButton;
 
 	[HideInInspector]
 	public UnityEvent damageEvent;
@@ -24,6 +29,8 @@ public class Player : MonoBehaviour
 
 	private void Awake()
 	{
+		rb = GetComponent<Rigidbody2D>();
+
 		if (damageEvent == null)
 		{
 			damageEvent = new UnityEvent();
@@ -33,25 +40,55 @@ public class Player : MonoBehaviour
 
 	private void Start() => playerPos = transform.position;
 
-	private void Update()
+	private void FixedUpdate()
     {
+		Vector2 velocity = Vector2.zero;
+
 		if (Input.GetKeyDown(KeyCode.Space) && !isShooting)
-        {
-			isShooting = true;
+		{
+			Attack();
+		}
 
-			PoolObject bullet = PoolManager.Get(POOL_PLAYER_BULLET_ID);
-			bullet.GetComponent<Bullet>().damage = damage;
-			bullet.transform.position = transform.position;
-			bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * shootForce);
+		//if (RightButton.IsPressed)
+		//{
+		//	Debug.Log("Press Right");
+		//	direction = 1;
+		//	Move();
+		//}
 
-			AudioManager.PlaySoundOnce("PlayerBullet");
+		//if (LeftButton.IsPressed)
+		//{
+		//	Debug.Log("Press Left");
+		//	direction = -1;
+		//	Move();
+		//}
 
-			LeanTween.delayedCall(reloadingTime, () => isShooting = false);
-        }
+		if (RightButton.IsPressed) velocity.x += speed;
+		if (LeftButton.IsPressed) velocity.x -= speed;
 
-		float xPos = transform.position.x + (Input.GetAxis("Horizontal") * speed);
-		playerPos = new Vector3(Mathf.Clamp(xPos, -PLAYER_MAX_X_POSITION, PLAYER_MAX_X_POSITION), playerPos.y, 0f);
-		transform.position = playerPos;
+		rb.velocity = velocity * Time.fixedDeltaTime;
+		//Debug.Log(rb.position.x);
+		rb.position = new Vector3(Mathf.Clamp(rb.position.x, -PLAYER_MAX_X_POSITION, PLAYER_MAX_X_POSITION), rb.position.y, 0f);
+	}
+
+	//private void Move()
+	//{
+	//	float xPos = transform.position.x + (Input.GetAxis("Horizontal") * speed * direction);
+	//	playerPos = new Vector3(Mathf.Clamp(xPos, -PLAYER_MAX_X_POSITION, PLAYER_MAX_X_POSITION), playerPos.y, 0f);
+	//	transform.position = playerPos;
+	//}
+
+	public void Attack()
+	{
+		isShooting = true;
+
+		PoolObject bullet = PoolManager.Get(POOL_PLAYER_BULLET_ID);
+		bullet.GetComponent<Bullet>().damage = damage;
+		bullet.transform.position = transform.position;
+		bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * shootForce);
+
+		AudioManager.PlaySoundOnce("PlayerBullet");
+		LeanTween.delayedCall(reloadingTime, () => isShooting = false);
 	}
 
 	public void Damage(float damage)
