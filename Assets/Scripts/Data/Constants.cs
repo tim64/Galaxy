@@ -56,7 +56,7 @@ public static class Constants
 
 	#region Boss Mega Ship
 	//Время спавна кораблей поддрержки
-	public static float BOSS_JET_SPAWN_TIME = 1;
+	public static float BOSS_JET_SPAWN_TIME = 5;
 	#endregion
 
 	#region Boss Alien Ship
@@ -106,13 +106,13 @@ public static class Constants
 	//Сила стрельбы данного типа корабля
 	public static float ANGRY_SHIP_SHOOT_FORCE = 3;
 	//Период яростной атаки
-	public static float ANGRY_SHIP_RAGE_PERIOD = 3;
+	public static float ANGRY_SHIP_RAGE_PERIOD = 8;
 	//Продолжительность яростной атаки
-	public static float ANGRY_SHIP_RAGE_ANIMATION_TIME = 5;
+	public static float ANGRY_SHIP_RAGE_ANIMATION_TIME = 3;
 	//Скорость атаки при ярости
-	public static float ANGRY_SHIP_RAGE_SHOOT_RATE = 3;
+	public static float ANGRY_SHIP_RAGE_SHOOT_RATE = 10;
 	//Обычная скорость атаки
-	public static float ANGRY_SHIP_SHOOT_RAGE = 0.2f;
+	public static float ANGRY_SHIP_SHOOT_RATE = 0.5f;
 	#endregion
 
 	#region Teleport ship
@@ -152,11 +152,11 @@ public static class Constants
 	//Перезарядка стрельбы
 	public static float PLAYER_RELOADING_TIME = 0.1f;
 	//Сила выстрела игрока
-	public static float PLAYER_SHOOT_FORCE = 10;
+	public static float PLAYER_SHOOT_FORCE = 12;
 	//Максимальное здоровье игрока
 	public static float PLAYER_MAX_HP = 100;
 	//Максимальная позиция по Х
-	public static float PLAYER_MAX_X_POSITION = 15;
+	public static float PLAYER_MAX_X_POSITION = 20;
 	//Урон игрока
 	public static float PLAYER_DAMAGE = 7;
 	#endregion

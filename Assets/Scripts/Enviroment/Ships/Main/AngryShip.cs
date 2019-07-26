@@ -7,13 +7,14 @@ using static Constants;
 /// </summary>
 public class AngryShip : BaseShip
 {
-	private bool isRaged;
+	private bool isRaged = true;
 
 	public override void Start()
 	{
-		shootRate = ANGRY_SHIP_SHOOT_RAGE;
+		shootRate = ANGRY_SHIP_SHOOT_RATE;
 		damage = ANGRY_SHIP_DAMAGE;
 		shootForce = ANGRY_SHIP_SHOOT_FORCE;
+		useRandomShootRange = false;
 
 		StartCoroutine(Rage());
 
@@ -27,23 +28,26 @@ public class AngryShip : BaseShip
 	/// <returns></returns>
 	private IEnumerator Rage()
 	{
-		while (true && target != null)
+		while (true)
 		{
-			//Добавляем случайное значение, чтобы было разнообразие в поведении кораблей
-			yield return new WaitForSeconds(ANGRY_SHIP_RAGE_PERIOD + ANGRY_SHIP_RAGE_ANIMATION_TIME + Random.Range(-1, 2));
+			yield return new WaitForSeconds(ANGRY_SHIP_RAGE_PERIOD + ANGRY_SHIP_RAGE_ANIMATION_TIME);
 
-			isRaged = !isRaged;
-
-			if (isRaged)
+			if (isRaged && target == null)  
 			{
 				shootRate = ANGRY_SHIP_RAGE_SHOOT_RATE;
-				LeanTween.rotateAroundLocal(gameObject, Vector3.back, -360, ANGRY_SHIP_RAGE_ANIMATION_TIME);
+				LeanTween.rotateAroundLocal(gameObject, Vector3.back, -360, ANGRY_SHIP_RAGE_ANIMATION_TIME).setOnComplete(() => shootRate = ANGRY_SHIP_SHOOT_RATE);
+				isRaged = false;
 			}
 			else
 			{
-				shootRate = ANGRY_SHIP_SHOOT_RAGE;
+				isRaged = !isRaged;
 			}
 		}
+	}
+
+	public override void Activate()
+	{
+		base.Activate();
 	}
 }
 
