@@ -32,6 +32,7 @@ public class BossShipMega : BossShip
 			PoolObject shipObject = PoolManager.Get(POOL_BOSS_SHIP_ID);
 			shipObject.transform.position = transform.position;
 			BaseShip ship = shipObject.GetComponent<BaseShip>();
+			ship.Activate();
 			ship.target = WaypointController.instance.attakPoint;
 			ship.attackState = true;
 		}

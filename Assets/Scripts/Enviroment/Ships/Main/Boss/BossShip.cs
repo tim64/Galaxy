@@ -39,7 +39,7 @@ public class BossShip : BaseShip
 	}
 
 	/// <summary>
-	/// Метод вызова трельбы
+	/// Метод вызова cтрельбы
 	/// </summary>
 	public override void Shoot()
 	{

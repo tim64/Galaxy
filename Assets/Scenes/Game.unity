@@ -1104,6 +1104,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4909437357500458791, guid: 03f6396f294b04686a30794855676f67,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4909437355877831405, guid: 03f6396f294b04686a30794855676f67,
         type: 3}
       propertyPath: audioSources.Array.size
@@ -1164,11 +1169,6 @@ PrefabInstance:
       propertyPath: audioSources.Array.data[10]
       value: 
       objectReference: {fileID: 8300000, guid: ccd4401f876e1b44a95a5574e3e71c27, type: 3}
-    - target: {fileID: 4909437357500458791, guid: 03f6396f294b04686a30794855676f67,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03f6396f294b04686a30794855676f67, type: 3}
 --- !u!4 &331669697 stripped
@@ -3851,7 +3851,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2143182715}
-  - component: {fileID: 2143182716}
   m_Layer: 0
   m_Name: Cameras
   m_TagString: Untagged
@@ -3874,21 +3873,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2143182716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143182714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b9b5117c43084b59bbd99821d84dff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toggleKey: 96
-  shakeToOpen: 1
-  shakeAcceleration: 3
 --- !u!1001 &9141366474950087626
 PrefabInstance:
   m_ObjectHideFlags: 0
