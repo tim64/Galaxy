@@ -1,5 +1,5 @@
 # Игра SpaceLords
-Ссылка на apk: [SpaceLords.apk - Google Диск](https://drive.google.com/file/d/1eMP3hOfQqNeUXxCxSzkpxNiC_Rm1CrQs/view?usp=sharing)
+Ссылка на apk: [SpaceLords.apk - Google Диск](https://drive.google.com/file/d/14mpfKhAXXZLGVoYhBJ_o3CpJnOxyd25e/view?usp=sharing)
 ## Прототип
 Прототипом игры является игра Galaxian (NES), жанра Shoot ’em up. Цель игры уничтожить флот противника
 
