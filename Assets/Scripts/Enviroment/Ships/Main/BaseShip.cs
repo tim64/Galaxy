@@ -121,10 +121,16 @@ public class BaseShip : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Respawn")
+		if (collision.gameObject.tag == "Player")
 		{
 			attackState = false;
 			collision.gameObject.GetComponent<Player>().Damage(BASE_SHIP_CRUSH_DAMAGE);
+			DestroyShip();
+		}
+
+		if (collision.gameObject.tag == "Respawn")
+		{
+			attackState = false;
 			DestroyShip();
 		}
 	}

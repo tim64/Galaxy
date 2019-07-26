@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
 		}
 
 		//По умолчанию музыка немного тише
-		musicPlayer.volume = 0.5f;
+		musicPlayer.volume = 0.75f;
 
 	}
 }
