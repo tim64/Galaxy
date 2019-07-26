@@ -72,9 +72,9 @@ public class Level
 		}
 
 		var filePath = JSON_PATH_LEVEL + levelIndex;
-
 		var jsonTextFile = Resources.Load<TextAsset>(filePath);
 		currentLevelData = JsonUtility.FromJson<Level>(jsonTextFile.text);
+
 		return currentLevelData;
     }
 }

@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Класс босса.
+/// </summary>
 public class BossShip : BaseShip
 {
 	protected Vector3 startPos;
@@ -17,7 +20,9 @@ public class BossShip : BaseShip
 		useRandomShootRange = false;
 	}
 
-
+	/// <summary>
+	/// Пояление босса и начало его работы
+	/// </summary>
 	public override void Start()
 	{
 		startPos = transform.position;
@@ -25,11 +30,17 @@ public class BossShip : BaseShip
 		base.Start();
 	}
 
+	/// <summary>
+	/// Активация босса
+	/// </summary>
 	public override void Activate()
 	{
 		base.Activate();
 	}
 
+	/// <summary>
+	/// Метод вызова трельбы
+	/// </summary>
 	public override void Shoot()
 	{
 		if (attackPhase)
@@ -52,11 +63,17 @@ public class BossShip : BaseShip
 		StartCoroutine(HorizontalFly());
 	}
 
+	/// <summary>
+	/// Снятие неуязвимости
+	/// </summary>
 	protected void RemoveInvulnerability()
 	{
 		GetComponent<Collider2D>().enabled = true;
 	}
 
+	/// <summary>
+	/// Активация пушек босса
+	/// </summary>
 	protected void ActivateGuns()
 	{
 		foreach (var item in GetComponentsInChildren<BossGun>())
@@ -80,6 +97,9 @@ public class BossShip : BaseShip
 		}
 	}
 
+	/// <summary>
+	/// Уничтожение босса
+	/// </summary>
 	protected override void DestroyShip()
 	{
 		base.DestroyShip();

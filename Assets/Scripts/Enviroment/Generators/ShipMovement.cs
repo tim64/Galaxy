@@ -9,7 +9,6 @@ public class ShipMovement : MonoBehaviour
 {
 	private readonly int moveXTime = FLEET_MOVE_TIME_X;
 	private readonly int maxPosX = FLEET_MAX_POS_X;
-	private readonly int currentMaxPosX = FLEET_CURRENT_POS_X;
 
 	private int posX;
 	private int posY = -1;

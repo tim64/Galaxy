@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Класс, который содержит ссылки на "особые точки" на сцене
+/// </summary>
 public class WaypointController : MonoBehaviour
 {
 	[Header("Point")]

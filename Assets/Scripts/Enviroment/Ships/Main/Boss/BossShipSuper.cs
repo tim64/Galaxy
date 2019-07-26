@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using static Constants;
 
+/// <summary>
+/// Усиленный вариант босса
+/// </summary>
 public class BossShipSuper : BossShip
 {
 
@@ -37,7 +40,7 @@ public class BossShipSuper : BossShip
 		}
 	}
 
-	void Update()
+	private void Update()
 	{
 		if (attackPhase)
 		{

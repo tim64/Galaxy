@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Класс обабатывает поведение лайф-бара
+/// </summary>
 public class LifeBar : MonoBehaviour
 {
 	public Slider slider;
@@ -10,7 +13,6 @@ public class LifeBar : MonoBehaviour
     {
 		slider.maxValue = player.Hp;
 		player.damageEvent.AddListener(ChangeSlider);
-
 	}
 
 	private void ChangeSlider()

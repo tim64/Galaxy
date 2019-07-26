@@ -3,7 +3,7 @@
 
 /// <summary>
 /// Класс, генерирует случайные корабли на игровой сцене
-/// Данные берет из объекта World
+/// Данные берет из объекта Level
 /// </summary>
 public class ShipGenerator : MonoBehaviour
 {
@@ -63,7 +63,7 @@ public class ShipGenerator : MonoBehaviour
 		newShip.transform.parent = shipContainer.transform;
 	}
 
-    private static GameObject CreateShipContainer()
+	private GameObject CreateShipContainer()
     {
 		GameObject ShipContainer = new GameObject
 		{

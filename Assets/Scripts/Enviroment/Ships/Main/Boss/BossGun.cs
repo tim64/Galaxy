@@ -1,8 +1,11 @@
 ﻿using static Constants;
 
+/// <summary>
+/// Пушка босса.
+/// </summary>
 public class BossGun : BaseShip
 {
-    private void Awake()
+	private void Awake()
     {
 		shootRate = BOSS_GUN_SHOOT_RATE;
 		useRandomShootRange = false;

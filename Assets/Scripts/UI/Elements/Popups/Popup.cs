@@ -5,6 +5,9 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using static Constants;
 
+/// <summary>
+/// UI класс для любых всплывающих окон
+/// </summary>
 public class Popup : MonoBehaviour
 {
 	[HideInInspector]
@@ -27,6 +30,9 @@ public class Popup : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Закрыть окно
+	/// </summary>
 	public void Close()
 	{
 		isOpen = !isOpen;
@@ -35,6 +41,9 @@ public class Popup : MonoBehaviour
 		onOpen.Invoke();
 	}
 
+	/// <summary>
+	/// Открыть окно
+	/// </summary>
 	public void Open()
 	{
 		isOpen = !isOpen;
@@ -43,18 +52,27 @@ public class Popup : MonoBehaviour
 		onOpen.Invoke();
 	}
 
+	/// <summary>
+	/// Перезапустить игру
+	/// </summary>
 	public void RestartGame()
 	{
 		LeanTween.reset();
 		SceneManager.LoadScene(SCENE_GAME, LoadSceneMode.Single);
 	}
 
+	/// <summary>
+	/// Выйти в меню
+	/// </summary>
 	public void GoToMenu()
 	{
 		LeanTween.reset();
 		SceneManager.LoadScene(SCENE_MENU, LoadSceneMode.Single);
 	}
 
+	/// <summary>
+	/// Перейти на след. уровень
+	/// </summary>
 	public void GoToNextLevel()
 	{
 		LeanTween.reset();
@@ -62,6 +80,9 @@ public class Popup : MonoBehaviour
 		LevelController.GoToNextLevel();
 	}
 
+	/// <summary>
+	/// При уничтожении окна, снять паузу
+	/// </summary>
 	private void OnDestroy()
 	{
 		Time.timeScale = 1;

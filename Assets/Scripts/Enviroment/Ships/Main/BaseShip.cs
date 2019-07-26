@@ -15,9 +15,6 @@ using static Constants;
 [RequireComponent(typeof(SpriteRenderer))]
 public class BaseShip : MonoBehaviour
 {
-	[HideInInspector]
-	public UnityEvent respawnEvent;
-
 	[Header("FX")]
 	public GameObject explosionFX;
 
@@ -65,14 +62,17 @@ public class BaseShip : MonoBehaviour
 		shootRate *= difficulty;
 	}
 
+	/// <summary>
+	/// Метод старта
+	/// </summary>
 	public virtual void Start()
 	{
-		if (respawnEvent == null)
-		{
-			respawnEvent = new UnityEvent();
-		}
+
 	}
 
+	/// <summary>
+	/// Активация корабля и начало стрельбы
+	/// </summary>
 	public virtual void Activate()
 	{
 		AudioManager.PlaySoundOnce(S_TELEPORT);
@@ -82,6 +82,10 @@ public class BaseShip : MonoBehaviour
 		StartCoroutine(Shooting());
 	}
 
+	/// <summary>
+	/// Метод стрельбы у корабля
+	/// </summary>
+	/// <returns></returns>
 	protected IEnumerator Shooting()
 	{
 		while (true && isActivated)
@@ -117,17 +121,11 @@ public class BaseShip : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Player")
+		if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Respawn")
 		{
 			attackState = false;
 			collision.gameObject.GetComponent<Player>().Damage(BASE_SHIP_CRUSH_DAMAGE);
 			DestroyShip();
-		}
-
-		if (collision.gameObject.tag == "Respawn")
-		{
-			attackState = false;
-			respawnEvent.Invoke();
 		}
 	}
 
@@ -190,6 +188,10 @@ public class BaseShip : MonoBehaviour
 		bullet.damage = damage;
 	}
 
+	/// <summary>
+	/// Метод для нанесения урона корабля
+	/// </summary>
+	/// <param name="damage"></param>
 	public virtual void DamageShip(float damage)
 	{
 		if ((hp -= damage) <= 0)
@@ -199,7 +201,9 @@ public class BaseShip : MonoBehaviour
 		}
 	}
 
-
+	/// <summary>
+	/// Метод для уничтожения корабля
+	/// </summary>
 	protected virtual void DestroyShip()
 	{
 		PoolObject fx = PoolManager.Get(POOL_EXPLOSION_ID);

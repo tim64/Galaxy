@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿/// <summary>
+/// UI класс для паузы
+/// </summary>
 public class Pause : Popup
 {
-
+	//FIXME: Можно определить дополнительное поведение, но пока что смысла нет.
 }

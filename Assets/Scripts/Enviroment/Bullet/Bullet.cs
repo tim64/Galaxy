@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour
 		}
 	}
 
-	void Update()
+	private void Update()
 	{
 		if (!render.isVisible)
 		{

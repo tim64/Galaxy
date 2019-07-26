@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityNightPool;
 using static Constants;
 
 /// <summary>
-/// Класс, который расставляет корабли по сетке
+/// Класс, который расставляет корабли по сетке.
+/// ККроме того, класс делает эффект появления флота
 /// </summary>
 /// <param name="ShipContainer"></param>
 public class ShipGridControl : MonoBehaviour
@@ -15,6 +14,9 @@ public class ShipGridControl : MonoBehaviour
 	private int hPos;
 	private int vPos;
 
+	/// <summary>
+	/// Событие, которое вызывается, когда корабли расставлены по сетке
+	/// </summary>
 	public UnityEvent gridIsDone;
 
 	private void Awake()
@@ -63,6 +65,8 @@ public class ShipGridControl : MonoBehaviour
 			CreateSpawnFX(ship);
 			yield return wait;
 		}
+
+		//Вызов события
 		gridIsDone.Invoke();
 	}
 

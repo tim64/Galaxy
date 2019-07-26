@@ -2,8 +2,14 @@
 using UnityEngine.UI;
 using static Constants;
 
+/// <summary>
+/// Класс показывает и скрывает интро-текст
+/// </summary>
 public class FadeIntroText : MonoBehaviour
 {
+	/// <summary>
+	/// Показать интро-текст
+	/// </summary>
     public void Show()
     {
 		GetComponent<Text>().text = Level.currentLevelData.LevelName;

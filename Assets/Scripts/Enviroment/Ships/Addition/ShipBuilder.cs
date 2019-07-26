@@ -29,6 +29,10 @@ public class ShipBuilder : MonoBehaviour
 		return newShip;
 	}
 
+	/// <summary>
+	/// Метод создает корабль-босс, в зависимости от текущих данных уровня
+	/// </summary>
+	/// <returns></returns>
 	public GameObject CreateBossShip()
 	{
 		//FIXME: Индекс из массива боссов

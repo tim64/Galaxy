@@ -2,8 +2,13 @@
 using UnityEngine;
 using static Constants;
 
+/// <summary>
+/// Класс, который управляет флотом
+/// Он вызывает атаки кораблей и призывает боссов если корабли закончились
+/// </summary>
 public class FleetController : MonoBehaviour
 {
+	//Ссылка на билдер кораблей
 	public ShipBuilder builder;
 
 	private BaseShip[] ships;
@@ -14,7 +19,6 @@ public class FleetController : MonoBehaviour
 	private void Start()
 	{
 		player = WaypointController.instance.attakPoint;
-
 		attackCoroutine = StartCoroutine(Attack());
 	}
 
@@ -27,7 +31,6 @@ public class FleetController : MonoBehaviour
 			BaseShip ship = GetRandomShip();
 			if (ship != null)
 			{
-				ship.respawnEvent.AddListener(() => DestroyShip(ship));
 				MoveShip(ship);
 			}	
 		}

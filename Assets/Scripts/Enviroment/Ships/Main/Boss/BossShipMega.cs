@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityNightPool;
 using static Constants;
 
+/// <summary>
+/// Самый сильный вариант босса
+/// </summary>
 public class BossShipMega : BossShip
 {
 	protected override void Awake()

@@ -13,8 +13,7 @@ public class Player : MonoBehaviour
 	private Rigidbody2D rb;
 	private Vector2 playerPos;
 
-	private int direction;
-
+	//Ссылки на кнопки управления
 	public PlayerButton LeftButton; 
 	public PlayerButton RightButton;
 
@@ -37,7 +36,6 @@ public class Player : MonoBehaviour
 		}
 	}
 
-
 	private void Start() => playerPos = transform.position;
 
 	private void FixedUpdate()
@@ -49,35 +47,16 @@ public class Player : MonoBehaviour
 			Attack();
 		}
 
-		//if (RightButton.IsPressed)
-		//{
-		//	Debug.Log("Press Right");
-		//	direction = 1;
-		//	Move();
-		//}
-
-		//if (LeftButton.IsPressed)
-		//{
-		//	Debug.Log("Press Left");
-		//	direction = -1;
-		//	Move();
-		//}
-
 		if (RightButton.IsPressed) velocity.x += speed;
 		if (LeftButton.IsPressed) velocity.x -= speed;
 
 		rb.velocity = velocity * Time.fixedDeltaTime;
-		//Debug.Log(rb.position.x);
 		rb.position = new Vector3(Mathf.Clamp(rb.position.x, -PLAYER_MAX_X_POSITION, PLAYER_MAX_X_POSITION), rb.position.y, 0f);
 	}
 
-	//private void Move()
-	//{
-	//	float xPos = transform.position.x + (Input.GetAxis("Horizontal") * speed * direction);
-	//	playerPos = new Vector3(Mathf.Clamp(xPos, -PLAYER_MAX_X_POSITION, PLAYER_MAX_X_POSITION), playerPos.y, 0f);
-	//	transform.position = playerPos;
-	//}
-
+	/// <summary>
+	/// Метод для вызоыва атаки игрока
+	/// </summary>
 	public void Attack()
 	{
 		isShooting = true;
@@ -91,6 +70,10 @@ public class Player : MonoBehaviour
 		LeanTween.delayedCall(reloadingTime, () => isShooting = false);
 	}
 
+	/// <summary>
+	/// Метод, для нанесения урона по игроку
+	/// </summary>
+	/// <param name="damage"></param>
 	public void Damage(float damage)
 	{
 		lastDamage = damage;
@@ -105,6 +88,9 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Метод для уничтожения игрока
+	/// </summary>
 	public void DestroyPlayer()
 	{
 		PoolObject fx = PoolManager.Get(POOL_EXPLOSION_ID);
@@ -112,7 +98,7 @@ public class Player : MonoBehaviour
 		fx.transform.position = transform.position;
 		gameObject.SetActive(false);
 
-		AudioManager.PlaySoundOnce(S_BOSS_BOOM);
+		AudioManager.PlaySoundOnce(S_PLAYER_BULLET);
 
 		//Конец игры
 		LeanTween.delayedCall(END_GAME_PAUSE_TIME, () => UIController.instance.EndGame(false));

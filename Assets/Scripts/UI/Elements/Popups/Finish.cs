@@ -1,5 +1,8 @@
 ﻿using UnityEngine.UI;
 
+/// <summary>
+/// UI класс для попапа финиша
+/// </summary>
 public class Finish : Popup
 {
 	public Text finishLabel;

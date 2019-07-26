@@ -27,12 +27,18 @@ public class LevelController : MonoBehaviour
 		SceneManager.LoadScene(SCENE_GAME);
 	}
 
+	/// <summary>
+	/// Перейти на след. уровень
+	/// </summary>
 	public static void GoToNextLevel()
 	{
 		currentLevelIndex += 1;
 		SceneManager.LoadScene(SCENE_GAME);
 	}
 
+	/// <summary>
+	/// Перейти в меню
+	/// </summary>
 	public void GoToMenu()
 	{
 		SceneManager.LoadScene(SCENE_MENU);

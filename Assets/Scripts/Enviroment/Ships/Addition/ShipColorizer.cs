@@ -16,6 +16,10 @@ public class ShipColorizer : MonoBehaviour
 		if (autoColorize) RandomColorize(GetComponent<SpriteRenderer>());
 	}
 
+	/// <summary>
+	/// Случайно покрасить переданный спрайт
+	/// </summary>
+	/// <param name="sprite"></param>
 	public void RandomColorize(SpriteRenderer sprite)
 	{
 		float randomX = Random.Range(-0.5f, 0.5f);
