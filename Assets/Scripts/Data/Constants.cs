@@ -154,9 +154,9 @@ public static class Constants
 	//Сила выстрела игрока
 	public static float PLAYER_SHOOT_FORCE = 12;
 	//Максимальное здоровье игрока
-	public static float PLAYER_MAX_HP = 100;
+	public static float PLAYER_MAX_HP = 200;
 	//Максимальная позиция по Х
-	public static float PLAYER_MAX_X_POSITION = 20;
+	public static float PLAYER_MAX_X_POSITION = 22;
 	//Урон игрока
 	public static float PLAYER_DAMAGE = 7;
 	#endregion
