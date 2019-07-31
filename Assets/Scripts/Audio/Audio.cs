@@ -5,8 +5,16 @@ using System.Collections;
 /// Класс для корректной работы AudioManager
 /// Добавляет к обынчным audiosource кастомное поведение
 /// </summary>
+[RequireComponent(typeof(AudioSource))]
 public class Audio : MonoBehaviour
 {
+	private AudioSource source;
+
+	private void Awake()
+	{
+		source = GetComponent<AudioSource>();
+	}
+
 	/// <summary>
 	/// Проиграть звуки 1 раз
 	/// </summary>
@@ -18,7 +26,7 @@ public class Audio : MonoBehaviour
 
 	IEnumerator PlaySoundCoroutine(AudioClip audioClip)
 	{
-		GetComponent<AudioSource>().PlayOneShot(audioClip);
+		source.PlayOneShot(audioClip);
 		yield return new WaitForSeconds(audioClip.length);
 		Destroy(gameObject);
 	}
@@ -29,9 +37,9 @@ public class Audio : MonoBehaviour
 	/// <param name="audioClip"></param>
 	public void PlaySoundLoop(AudioClip audioClip)
 	{
-		GetComponent<AudioSource>().clip = audioClip;
-		GetComponent<AudioSource>().loop = true;
-		GetComponent<AudioSource>().Play();
+		source.clip = audioClip;
+		source.loop = true;
+		source.Play();
 	}
 
 	/// <summary>
@@ -39,7 +47,7 @@ public class Audio : MonoBehaviour
 	/// </summary>
 	public void StopSound()
 	{
-		GetComponent<AudioSource>().Stop();
+		source.Stop();
 		Destroy(gameObject);
 	}
 }
