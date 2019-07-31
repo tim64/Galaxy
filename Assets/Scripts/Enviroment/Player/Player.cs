@@ -3,13 +3,17 @@ using UnityEngine.Events;
 using UnityNightPool;
 using static Constants;
 
+/// <summary>
+/// Класс игрока
+/// </summary>
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
 	private readonly float speed = PLAYER_SPEED;
 	private readonly float damage = PLAYER_DAMAGE;
 	private readonly float reloadingTime = PLAYER_RELOADING_TIME;
 	private readonly float shootForce = PLAYER_SHOOT_FORCE;
-	private bool isShooting;
+	private bool isShooting = default;
 	private Rigidbody2D rb;
 	private Vector2 playerPos;
 
@@ -26,6 +30,8 @@ public class Player : MonoBehaviour
 	[HideInInspector]
 	public float Hp { get; private set; } = PLAYER_MAX_HP;
 
+	private Vector2 velocity;
+
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -40,12 +46,24 @@ public class Player : MonoBehaviour
 
 	private void FixedUpdate()
     {
-		Vector2 velocity = Vector2.zero;
+		velocity = Vector2.zero;
 
+#if UNITY_EDITOR || UNITY_STANDALONE
 		if (Input.GetKeyDown(KeyCode.Space) && !isShooting)
 		{
 			Attack();
 		}
+
+		if (Input.GetKey(KeyCode.A))
+		{
+			velocity.x -= speed;
+		}
+
+		if (Input.GetKey(KeyCode.D))
+		{
+			velocity.x += speed;
+		}
+#endif
 
 		if (RightButton.IsPressed) velocity.x += speed;
 		if (LeftButton.IsPressed) velocity.x -= speed;
