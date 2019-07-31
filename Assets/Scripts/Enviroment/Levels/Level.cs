@@ -11,19 +11,19 @@ public class Level
 	public static Level currentLevelData;
 
 	[SerializeField]
-	private string _levelId;
+	private string _levelId = default;
 
 	[SerializeField] 
-    private string _levelName;
+    private string _levelName = default;
 
     [SerializeField] 
-    private int _shipCount;
+    private int _shipCount = default;
 
 	[SerializeField]
-	private int _difficulty;
+	private int _difficulty = default;
 
 	[SerializeField]
-	private int _bossType;
+	private int _bossType = default;
 
 	/// <summary>
 	/// ID текущего уровня
